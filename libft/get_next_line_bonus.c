@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 14:17:29 by emsoares          #+#    #+#             */
-/*   Updated: 2022/11/29 13:19:40 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:46:59 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,28 +109,3 @@ char	*get_next_line(int fd)
 	stash[fd] = start_next_stash(stash[fd]);
 	return (line);
 }
-
-/* int	main(void)
-{
-	char	*line;
-	char	*line2;
-	int		i;
-	int		fd1;
-	int		fd2;
-	fd1 = open("test.txt", O_RDONLY);
-	fd2 = open("test2.txt", O_RDONLY);
-	i = 0;
-	while (i < 7)
-	{
-		line = get_next_line(fd1);
-		printf(" %s", line);
-		free(line);
-		line2 = get_next_line(fd2);
-		printf("%s", line2);
-		free(line2);
-		i++;
-	}
-	close(fd1);
-	close(fd2);
-	return (0);
-} */

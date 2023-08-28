@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:11:55 by emsoares          #+#    #+#             */
-/*   Updated: 2023/08/24 21:04:32 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:42:18 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int main(int ac, char **av)
 	{
 		ft_check_map_file(game, av[1]);
 		ft_printf("passou");
+		ft_free_game(game);
 	}
+	free(game->map_utils);
+	free(game);
 	return (0);
 }

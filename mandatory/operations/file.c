@@ -23,13 +23,16 @@ void	args_in_file(t_data *d, char *file_name)
 	{
 		if(ft_strchr("1\t", line[0]))
 		{
-			ft_putstr_fd("File element position error!\n", 2);
-			exit(2);
+			free(line);
+			close(d->fd);
+			finish_error("File element position error!\n", 2);
 		}
 		valid_info(d, line);
 		free(line);
 		line = get_next_line(d->fd);
 	}
+	free(line);
+	close(d->fd);
 }
 
 void	valid_info(t_data *d, char *line)
@@ -100,24 +103,28 @@ void	put_rgb(t_data *d, char *line, int flag)
 		i++;
 	}
 	if (flag == 1)
-		put_fc_rgb(d, flag);
+		put_fc_rgb(d, flag, line);
 	else if (flag == 2)
-		put_fc_rgb(d, flag);
+		put_fc_rgb(d, flag, line);
 	free_double_pointer(d->map_utils->color_aux);
 }
 
-void	put_fc_rgb(t_data *d, int flag)
+void	put_fc_rgb(t_data *d, int flag, char *line)
 {
+	char *temp;
+
+	temp = 0;
+
 	if (flag == 1)
 	{
-		d->map_utils->f_color[ft_atoi(d->map_utils->color_aux[0])]
-		[ft_atoi(d->map_utils->color_aux[1])]
-		[ft_atoi(d->map_utils->color_aux[2])] = 1;
+		temp = ft_strtrim(line, " \t\n");
+		d->map_utils->f_color = ft_split(temp, ',');
 	}
 	else if (flag == 2)
 	{
-		d->map_utils->c_color[ft_atoi(d->map_utils->color_aux[0])]
-		[ft_atoi(d->map_utils->color_aux[1])]
-		[ft_atoi(d->map_utils->color_aux[2])] = 1;
+		temp = ft_strtrim(line, " \t\n");
+		d->map_utils->c_color = ft_split(temp + 2, ',');
 	}
+	if(temp)
+		free(temp);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/08/24 19:31:12 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:42:07 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_map
 	char *so;
 	char *we;
 	char *ea;
-	int f_color[255][255][255];
-	int c_color[255][255][255];
+	char **f_color;
+	char **c_color;
 	char **color_aux;
 }	t_map;
 
@@ -46,15 +46,18 @@ typedef struct s_data
 
 //****************utils.c********************
 void	ft_init_stack(t_data *d);
-int ft_count(char *str, char c);
+int 	ft_count(char *str, char c);
 void	finish_error(char *str, int i);
+void	ft_free_game(t_data *d);
 //****************file.c********************
 void	args_in_file(t_data *d, char *file_name);
 void	valid_info(t_data *d, char *line);
 void	put_path(t_data *d, char *line, int flag);
 void	put_rgb(t_data *d, char *line, int flag);
-void	put_fc_rgb(t_data *d, int flag);
+void	put_fc_rgb(t_data *d, int flag, char *line);
 //****************free.c********************
 void	free_double_pointer(char **str);
+
+//***************main.c*********************
 
 #endif
