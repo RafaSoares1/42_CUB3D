@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/08/29 12:15:32 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:27:15 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_map
 	char *we;
 	char *ea;
 	char **f_color;
+	int		flag_c;
+	int		flag_f;
 	char **c_color;
 	char **color_aux;
 }	t_map;
@@ -48,17 +50,25 @@ typedef struct s_data
 void	ft_init_stack(t_data *d);
 int 	ft_count(char *str, char c);
 void	finish_error(char *str, int i);
-void	ft_free_game(t_data *d);
-void	ft_no_leak(t_data *d, char *line);
+
+
 //****************file.c********************
 void	args_in_file(t_data *d, char *file_name);
 void	valid_info(t_data *d, char *line);
+void	valid_info2(t_data *d, char *line);
 void	put_path(t_data *d, char *line, int flag);
-void	put_rgb(t_data *d, char *line, int flag);
-void	put_fc_rgb(t_data *d, int flag, char *line);
+
 //****************free.c********************
 void	free_double_pointer(char **str);
+void	ft_free_game(t_data *d);
+void	ft_no_leak(t_data *d, char *line);
+
 
 //***************main.c*********************
+
+
+//***************rgb_utils******************
+void	put_rgb(t_data *d, char *line, int flag);
+void	put_fc_rgb(t_data *d, int flag, char *line);
 
 #endif

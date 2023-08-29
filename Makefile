@@ -22,6 +22,7 @@ SRCS = 	mandatory/main.c\
 		mandatory/operations/utils.c\
 		mandatory/operations/free.c\
 		mandatory/operations/file.c\
+		mandatory/operations/rgb_utils.c\
 
 
 OBJS = $(SRCS:%.c=%.o)
