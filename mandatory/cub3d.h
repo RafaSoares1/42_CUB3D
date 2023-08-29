@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/08/28 16:42:07 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/08/29 12:15:32 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_init_stack(t_data *d);
 int 	ft_count(char *str, char c);
 void	finish_error(char *str, int i);
 void	ft_free_game(t_data *d);
+void	ft_no_leak(t_data *d, char *line);
 //****************file.c********************
 void	args_in_file(t_data *d, char *file_name);
 void	valid_info(t_data *d, char *line);

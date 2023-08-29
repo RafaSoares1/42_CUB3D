@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:32:39 by emsoares          #+#    #+#             */
-/*   Updated: 2023/08/28 16:42:03 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/08/29 12:14:06 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,16 @@ void	ft_free_game(t_data *d)
 	free(d->map_utils->no);
 	free(d->map_utils->so);
 	free(d->map_utils->we);
+}
+
+void	ft_no_leak(t_data *d, char *line)
+{
+	while(1)
+	{
+		line = get_next_line(d->fd);
+		if (!line)
+			break;
+		free(line);
+	}
+	close(d->fd);
 }

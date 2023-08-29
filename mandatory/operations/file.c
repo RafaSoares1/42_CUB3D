@@ -17,22 +17,19 @@ void	args_in_file(t_data *d, char *file_name)
 	char	*line;
 
 	d->fd = open(file_name, O_RDONLY);
-	line = get_next_line(d->fd);
 	while (!d->map_utils->no || !d->map_utils->so || !d->map_utils->we ||
 		!d->map_utils->ea || !d->map_utils->f_color || !d->map_utils->c_color)
 	{
+		line = get_next_line(d->fd);
 		if(ft_strchr("1\t", line[0]))
 		{
-			free(line);
-			close(d->fd);
+			ft_no_leak(d, line);
 			finish_error("File element position error!\n", 2);
 		}
 		valid_info(d, line);
 		free(line);
-		line = get_next_line(d->fd);
 	}
-	free(line);
-	close(d->fd);
+	ft_no_leak(d, line);
 }
 
 void	valid_info(t_data *d, char *line)
