@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/08/30 12:36:44 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:53:06 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	char	*line
+	char	*line;
+	int		count_lines;
 	t_map *map_utils;
 	int		x;
 	int		y;
@@ -55,7 +56,7 @@ void	ft_init_stack(t_data *d);
 int 	ft_count(char *str, char c);
 void	finish_error(char *str, int i);
 int		ft_search(char *str, char c);
-
+int		ft_count_lines(t_data *d);
 
 //****************file.c********************
 void	args_in_file(t_data *d, char *file_name);

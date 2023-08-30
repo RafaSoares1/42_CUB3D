@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:32:39 by emsoares          #+#    #+#             */
-/*   Updated: 2023/08/30 11:54:15 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:53:16 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	ft_init_stack(t_data *d)
 	d->y = 0;
 	d->fd = 0;
 	d->temp_fd = 0;
+	d->i = 0;
+	d->line = 0;
+	d->count_lines = 0;
 	d->map_utils->color_aux = 0;
 	d->map_utils->map = 0;
 	d->map_utils->no = 0;
@@ -67,4 +70,22 @@ int	ft_search(char *str, char c)
 		i++;
 	}
 	return (0);
+}
+
+int	ft_count_lines(t_data *d)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	while (1)
+	{
+		str = get_next_line(d->fd);
+		if (!str)
+			break ;
+		free(str);
+		i++;
+	}
+	free (str);
+	return (i);
 }
