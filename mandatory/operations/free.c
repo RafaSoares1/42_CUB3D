@@ -47,8 +47,6 @@ void	ft_free_game(t_data *d)
 
 void	ft_no_leak(t_data *d, char *line)
 {
-	if (line)
-		free(line);
 	while (1)
 	{
 		line = get_next_line(d->fd);
