@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/08/30 15:53:06 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/01 09:13:04 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <X11/X.h>
 # include <fcntl.h>
 # include <unistd.h>
+# define SIZE 45
 
 typedef struct s_map
 {
@@ -79,5 +80,9 @@ void	put_fc_rgb(t_data *d, int flag, char *line);
 
 //***************map_utils*******************
 void	map_to_file(t_data *d, char *file_name);
+void	map_to_matrix(t_data *d);
+void	ft_fill_map_index(t_data *d);
+void	print_matrix(t_data *d);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:32:39 by emsoares          #+#    #+#             */
-/*   Updated: 2023/08/30 15:53:16 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/01 08:57:04 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ int	ft_count_lines(t_data *d)
 		i++;
 	}
 	free (str);
+	close(d->fd);
 	return (i);
 }
