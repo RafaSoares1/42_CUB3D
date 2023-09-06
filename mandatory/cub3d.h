@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/01 09:13:04 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:54:22 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_data
 	void	*win_ptr;
 	char	*line;
 	int		count_lines;
+	int		line_length;
 	t_map *map_utils;
 	int		x;
 	int		y;
@@ -72,7 +73,8 @@ void	ft_no_leak(t_data *d, char *line);
 
 
 //***************main.c*********************
-
+int		main(int ac, char **av);
+void	ft_check_map_file(t_data *d, char *file_name);
 
 //***************rgb_utils******************
 void	put_rgb(t_data *d, char *line, int flag);
@@ -80,9 +82,14 @@ void	put_fc_rgb(t_data *d, int flag, char *line);
 
 //***************map_utils*******************
 void	map_to_file(t_data *d, char *file_name);
+void	map_to_file2(t_data *d);
 void	map_to_matrix(t_data *d);
 void	ft_fill_map_index(t_data *d);
-void	print_matrix(t_data *d);
+void	put_first_last(t_data *d);
 
+//***************map_utils2*****************
+char	*fill_matrix_line(t_data *d, char *str);
+void	fill_rest(t_data *d);
+void	print_matrix(t_data *d);
 
 #endif

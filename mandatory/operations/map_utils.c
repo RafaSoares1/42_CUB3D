@@ -6,35 +6,42 @@
 /*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:20:57 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/01 09:18:32 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/06 13:03:16 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void map_to_file(t_data *d, char *file_name)
+void	map_to_file(t_data *d, char *file_name)
 {
 	d->fd = open(file_name, O_RDONLY);
 	d->temp_fd = open("map_temp.map", O_RDWR | O_CREAT
-				| O_TRUNC, S_IRUSR | S_IWUSR);
-	while(d->i < d->map_utils->skip_count)
+			| O_TRUNC, S_IRUSR | S_IWUSR);
+	while (d->i < d->map_utils->skip_count)
 	{
 		d->line = get_next_line(d->fd);
 		free(d->line);
 		d->i++;
 	}
 	d->line = get_next_line(d->fd);
-	while(ft_search(d->line, '1') != 1)
+	while (ft_search(d->line, '1') != 1)
 	{
 		free(d->line);
 		d->line = get_next_line(d->fd);
 	}
-	while(ft_search(d->line, '1') == 1)
+	while (ft_search(d->line, '1') == 1)
 	{
+		if ((int)ft_strlen(d->line) > d->line_length)
+			d->line_length = (int)ft_strlen(d->line);
 		write(d->temp_fd, d->line, ft_strlen(d->line));
 		free(d->line);
 		d->line = get_next_line(d->fd);
 	}
+	map_to_file2(d);
+}
+
+void	map_to_file2(t_data *d)
+{
 	free(d->line);
 	ft_no_leak(d, d->line);
 	close(d->temp_fd);
@@ -52,11 +59,12 @@ void	map_to_matrix(t_data *d)
 
 void	ft_fill_map_index(t_data *d)
 {
-	d->i = 0;
 	char	*str;
 
-	d->fd = open("map_temp.map", O_RDONLY);
 	d->i = 0;
+	d->fd = open("map_temp.map", O_RDONLY);
+	d->i = 1;
+	put_first_last(d);
 	while (d->i <= d->count_lines)
 	{
 		str = get_next_line(d->fd);
@@ -65,29 +73,34 @@ void	ft_fill_map_index(t_data *d)
 			free(str);
 			break ;
 		}
-		d->map_utils->map[d->i] = ft_strtrim(str, "\n");
+		d->map_utils->map[d->i] = fill_matrix_line(d, str);
 		free (str);
 		d->i++;
 	}
 	close(d->fd);
-	print_matrix(d);//ta a printar bem !!!
+	fill_rest(d);
+	print_matrix(d);
 }
 
-void	print_matrix(t_data *d)
+void	put_first_last(t_data *d)
 {
-	int i = 0;
-	int j = 0;
+	int	i;
 
-	while(d->map_utils->map[i])
+	i = 0;
+	d->map_utils->map[0] = malloc(sizeof(char) * (d->line_length + 1));
+	d->map_utils->map[d->count_lines - 1] = malloc(sizeof(char)
+			* (d->line_length + 1));
+	while (i < d->line_length)
 	{
-		j = 0;
-		while(d->map_utils->map[i][j])
-		{
-			write(1, &d->map_utils->map[i][j], 1);
-			j++;
-		}
-		write(1,"\n", 1);
+		d->map_utils->map[0][i] = '#';
 		i++;
 	}
-	write(1,"\n", 1);
+	d->map_utils->map[0][i] = '\0';
+	i = 0;
+	while (i < d->line_length)
+	{
+		d->map_utils->map[d->count_lines - 1][i] = '#';
+		i++;
+	}
+	d->map_utils->map[d->count_lines - 1][i] = '\0';
 }

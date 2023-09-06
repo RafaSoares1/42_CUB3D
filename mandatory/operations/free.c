@@ -33,6 +33,8 @@ void	ft_free_game(t_data *d)
 		free_double_pointer(d->map_utils->c_color);
 	if (d->map_utils->flag_f == 1)
 		free_double_pointer(d->map_utils->f_color);
+	if (d->map_utils->map)
+		free_double_pointer(d->map_utils->map);
 	if (d->map_utils->ea)
 		free(d->map_utils->ea);
 	if (d->map_utils->no)

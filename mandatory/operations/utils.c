@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:32:39 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/01 08:57:04 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:58:09 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_init_stack(t_data *d)
 	d->i = 0;
 	d->line = 0;
 	d->count_lines = 0;
+	d->line_length = 0;
 	d->map_utils->color_aux = 0;
 	d->map_utils->map = 0;
 	d->map_utils->no = 0;
@@ -65,7 +66,7 @@ int	ft_search(char *str, char c)
 	i = 0;
 	while (str[i])
 	{
-		if(str[i] == c)
+		if (str[i] == c)
 			return (1);
 		i++;
 	}
@@ -88,5 +89,5 @@ int	ft_count_lines(t_data *d)
 	}
 	free (str);
 	close(d->fd);
-	return (i);
+	return (i + 2);
 }
