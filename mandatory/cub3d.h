@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/06 17:19:18 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:43:25 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ int 	ft_count(char *str, char c);
 void	finish_error(char *str, int i);
 int		ft_search(char *str, char c);
 int		ft_count_lines(t_data *d);
+
+//****************utils2.c********************
+void	ft_map_dup(t_data *d);
 
 //****************file.c********************
 void	args_in_file(t_data *d, char *file_name);

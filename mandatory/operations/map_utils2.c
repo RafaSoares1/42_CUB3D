@@ -49,6 +49,7 @@ void	fill_rest(t_data *d)
 		d->x++;
 	}
 	check_letters(d);
+	
 	check_flood_fill(d);
 }
 

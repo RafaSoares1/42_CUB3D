@@ -20,6 +20,7 @@ MINILIBX = ./minilibx-linux/libmlx.a
 
 SRCS = 	mandatory/main.c\
 		mandatory/operations/utils.c\
+		mandatory/operations/utils2.c\
 		mandatory/operations/free.c\
 		mandatory/operations/file.c\
 		mandatory/operations/rgb_utils.c\

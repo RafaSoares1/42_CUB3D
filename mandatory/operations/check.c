@@ -47,4 +47,7 @@ void	handle_invalid_input(t_data *d)
 	finish_error("Error: invalid elements in the map!\n", 2);
 }
 
-void	check_flood_fill(t_data *d);
+void	check_flood_fill(t_data *d)
+{
+	
+}
