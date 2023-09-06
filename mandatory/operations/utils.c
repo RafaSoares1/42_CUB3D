@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:32:39 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/06 14:58:09 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:59:14 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_init_stack(t_data *d)
 	d->map_utils->f_color = 0;
 	d->map_utils->flag_f = 0;
 	d->map_utils->skip_count = 0;
+	d->map_utils->player_pos = 0;
 }
 
 int	ft_count(char *str, char c)
