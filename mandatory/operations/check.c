@@ -74,5 +74,5 @@ int	check_flood_fill(t_data *d, char **map, int x, int y)
 	check_flood_fill(d, map, x, y - 1);
 	if (hastag_count == 0)
 		return (1);
-	return(0);
+	return (0);
 }

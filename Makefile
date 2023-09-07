@@ -23,6 +23,7 @@ SRCS = 	mandatory/main.c\
 		mandatory/operations/utils2.c\
 		mandatory/operations/free.c\
 		mandatory/operations/file.c\
+		mandatory/operations/file2.c\
 		mandatory/operations/rgb_utils.c\
 		mandatory/operations/map_utils.c\
 		mandatory/operations/map_utils2.c\

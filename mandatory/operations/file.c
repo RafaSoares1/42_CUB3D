@@ -40,54 +40,62 @@ void	valid_info(t_data *d, char *line)
 {
 	if (!ft_strncmp("NO ", line, 3))
 	{
+		if (d->map_utils->no)
+			error_dup_elem(d, line);
 		put_path(d, line, 1);
 		return ;
 	}
 	else if (!ft_strncmp("SO ", line, 3))
 	{
+		if (d->map_utils->so)
+			error_dup_elem(d, line);
 		put_path(d, line, 2);
 		return ;
 	}
-	else if (!ft_strncmp("WE ", line, 3))
+	valid_info1(d, line);
+	valid_info2(d, line);
+}
+
+void	error_dup_elem(t_data *d, char *line)
+{
+	free(line);
+	ft_no_leak(d, line);
+	ft_free_game(d);
+	finish_error("Error: duplicate elements!\n", 2);
+}
+
+void	valid_info1(t_data *d, char *line)
+{
+	if (!ft_strncmp("WE ", line, 3))
 	{
+		if (d->map_utils->we)
+			error_dup_elem(d, line);
 		put_path(d, line, 3);
 		return ;
 	}
 	else if (!ft_strncmp("EA ", line, 3))
 	{
+		if (d->map_utils->ea)
+			error_dup_elem(d, line);
 		put_path(d, line, 4);
 		return ;
 	}
-	valid_info2(d, line);
 }
 
 void	valid_info2(t_data *d, char *line)
 {
 	if (!ft_strncmp("F ", line, 2))
 	{
+		if (d->map_utils->f_color)
+			error_dup_elem(d, line);
 		put_rgb(d, line, 1);
 		return ;
 	}
 	else if (!ft_strncmp("C ", line, 2))
 	{
+		if (d->map_utils->c_color)
+			error_dup_elem(d, line);
 		put_rgb(d, line, 2);
 		return ;
 	}
-}
-
-void	put_path(t_data *d, char *line, int flag)
-{
-	char	*temp;
-
-	temp = ft_strdup(line + 3);
-	if (flag == 1 && !d->map_utils->no)
-		d->map_utils->no = ft_strtrim(temp, " \t\n");
-	else if (flag == 2 && !d->map_utils->so)
-		d->map_utils->so = ft_strtrim(temp, " \t\n");
-	else if (flag == 3 && !d->map_utils->we)
-		d->map_utils->we = ft_strtrim(temp, " \t\n");
-	else if (flag == 4 && !d->map_utils->ea)
-		d->map_utils->ea = ft_strtrim(temp, " \t\n");
-	free(temp);
-	return ;
 }

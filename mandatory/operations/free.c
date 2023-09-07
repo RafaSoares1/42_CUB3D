@@ -76,6 +76,7 @@ void	ft_no_leak(t_data *d, char *line)
 		line = get_next_line(d->fd);
 		if (!line)
 			break ;
+		valid_info(d, line);
 		free(line);
 	}
 	close(d->fd);
