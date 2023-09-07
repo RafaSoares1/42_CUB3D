@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/06 17:43:25 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:01:58 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 typedef struct s_map
 {
 	char	**map;
+	char	**map_dup;
 	char *no;
 	char *so;
 	char *we;
@@ -46,6 +47,8 @@ typedef struct s_data
 	int		count_lines;
 	int		line_length;
 	t_map *map_utils;
+	int		p_y;
+	int		p_x;
 	int		x;
 	int		y;
 	int		fd;
@@ -64,6 +67,7 @@ int		ft_count_lines(t_data *d);
 //****************utils2.c********************
 void	ft_map_dup(t_data *d);
 
+
 //****************file.c********************
 void	args_in_file(t_data *d, char *file_name);
 void	valid_info(t_data *d, char *line);
@@ -73,6 +77,7 @@ void	put_path(t_data *d, char *line, int flag);
 //****************free.c********************
 void	free_double_pointer(char **str);
 void	ft_free_game(t_data *d);
+void	ft_free_game2(t_data *d);
 void	ft_no_leak(t_data *d, char *line);
 
 
@@ -98,6 +103,8 @@ void	print_matrix(t_data *d);
 
 //***************check.c***********************
 void	check_letters(t_data *d);
+void	put_player_pos(t_data *d, char c);
 void	handle_invalid_input(t_data *d);
+int		check_flood_fill(t_data *d, char **map, int x, int y);
 
 #endif

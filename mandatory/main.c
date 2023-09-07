@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:11:55 by emsoares          #+#    #+#             */
-/*   Updated: 2023/08/29 15:23:11 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/07 11:36:34 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int ac, char **av)
 	{
 		ft_check_map_file(game, av[1]);
 		ft_printf("passou\n");
-		ft_free_game(game);
+		ft_free_game2(game);
 	}
 	return (0);
 }

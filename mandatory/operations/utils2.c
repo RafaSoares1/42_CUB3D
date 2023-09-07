@@ -17,10 +17,10 @@ void	ft_map_dup(t_data *d)
 	int	i;
 
 	i = 0;
-	d->map_dup = ft_calloc(d->lines + 1, sizeof(char *));
-	while (i < d->lines)
+	d->map_utils->map_dup = ft_calloc(d->count_lines + 1, sizeof(char *));
+	while (i < d->count_lines)
 	{
-		d->map_dup[i] = ft_strdup(d->map[i]);
+		d->map_utils->map_dup[i] = ft_strdup(d->map_utils->map[i]);
 		i++;
 	}
 }
