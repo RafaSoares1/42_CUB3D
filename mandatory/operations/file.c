@@ -26,9 +26,10 @@ void	args_in_file(t_data *d, char *file_name)
 			free(line);
 			ft_no_leak(d, line);
 			ft_free_game(d);
-			finish_error("File element position error!\n", 2);
+			finish_error("Error: invalid element position!\n", 2);
 		}
-		valid_info(d, line);
+		if (!valid_info(d, line) && line[0] != '\n')
+			error_in_elem(d, line);
 		free(line);
 		d->map_utils->skip_count++;
 	}
@@ -36,24 +37,68 @@ void	args_in_file(t_data *d, char *file_name)
 	map_to_file(d, file_name);
 }
 
-void	valid_info(t_data *d, char *line)
+int	valid_info(t_data *d, char *line)
 {
+	int	r;
+
+	r = 0;
 	if (!ft_strncmp("NO ", line, 3))
 	{
 		if (d->map_utils->no)
 			error_dup_elem(d, line);
 		put_path(d, line, 1);
-		return ;
+		return (1);
 	}
 	else if (!ft_strncmp("SO ", line, 3))
 	{
 		if (d->map_utils->so)
 			error_dup_elem(d, line);
 		put_path(d, line, 2);
-		return ;
+		return (1);
 	}
-	valid_info1(d, line);
-	valid_info2(d, line);
+	if (valid_info1(d, line) == 1)
+		r = 1;
+	if (valid_info2(d, line) == 1)
+		r = 1;
+	return (r);
+}
+
+int	valid_info1(t_data *d, char *line)
+{
+	if (!ft_strncmp("WE ", line, 3))
+	{
+		if (d->map_utils->we)
+			error_dup_elem(d, line);
+		put_path(d, line, 3);
+		return (1);
+	}
+	else if (!ft_strncmp("EA ", line, 3))
+	{
+		if (d->map_utils->ea)
+			error_dup_elem(d, line);
+		put_path(d, line, 4);
+		return (1);
+	}
+	return (0);
+}
+
+int	valid_info2(t_data *d, char *line)
+{
+	if (!ft_strncmp("F ", line, 2))
+	{
+		if (d->map_utils->f_color)
+			error_dup_elem(d, line);
+		put_rgb(d, line, 1);
+		return (1);
+	}
+	else if (!ft_strncmp("C ", line, 2))
+	{
+		if (d->map_utils->c_color)
+			error_dup_elem(d, line);
+		put_rgb(d, line, 2);
+		return (1);
+	}
+	return (0);
 }
 
 void	error_dup_elem(t_data *d, char *line)
@@ -62,40 +107,4 @@ void	error_dup_elem(t_data *d, char *line)
 	ft_no_leak(d, line);
 	ft_free_game(d);
 	finish_error("Error: duplicate elements!\n", 2);
-}
-
-void	valid_info1(t_data *d, char *line)
-{
-	if (!ft_strncmp("WE ", line, 3))
-	{
-		if (d->map_utils->we)
-			error_dup_elem(d, line);
-		put_path(d, line, 3);
-		return ;
-	}
-	else if (!ft_strncmp("EA ", line, 3))
-	{
-		if (d->map_utils->ea)
-			error_dup_elem(d, line);
-		put_path(d, line, 4);
-		return ;
-	}
-}
-
-void	valid_info2(t_data *d, char *line)
-{
-	if (!ft_strncmp("F ", line, 2))
-	{
-		if (d->map_utils->f_color)
-			error_dup_elem(d, line);
-		put_rgb(d, line, 1);
-		return ;
-	}
-	else if (!ft_strncmp("C ", line, 2))
-	{
-		if (d->map_utils->c_color)
-			error_dup_elem(d, line);
-		put_rgb(d, line, 2);
-		return ;
-	}
 }

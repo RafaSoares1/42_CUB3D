@@ -28,3 +28,11 @@ void	put_path(t_data *d, char *line, int flag)
 	free(temp);
 	return ;
 }
+
+void	error_in_elem(t_data *d, char *line)
+{
+	free(line);
+	ft_no_leak(d, line);
+	ft_free_game(d);
+	finish_error("Error: invalid element!\n", 2);
+}

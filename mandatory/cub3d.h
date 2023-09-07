@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/07 14:57:07 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:49:51 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,13 @@ void	ft_map_dup(t_data *d);
 
 //****************file.c********************
 void	args_in_file(t_data *d, char *file_name);
-void	valid_info(t_data *d, char *line);
+int		valid_info(t_data *d, char *line);
+int		valid_info1(t_data *d, char *line);
+int		valid_info2(t_data *d, char *line);
 void	error_dup_elem(t_data *d, char *line);
-void	valid_info1(t_data *d, char *line);
-void	valid_info2(t_data *d, char *line);
 
 //****************file2.c********************
+void	error_in_elem(t_data *d, char *line);
 void	put_path(t_data *d, char *line, int flag);
 
 //****************free.c********************
