@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/11 17:24:58 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/09/11 22:07:28 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <unistd.h>
 # define HEIGHT 1080
 # define WIDTH 1920
+# define S_WIDTH 8
+# define S_HEIGHT 8
 # define WALL 0xFF00
 # define FLOOR 0xFF0000
 # define PLAYER 0x000000
@@ -122,5 +124,5 @@ int		check_flood_fill(t_data *d, char **map, int x, int y);
 //***************game.c***********************
 void	start_game(t_data *d);
 void	draw_minimap(t_data *d);
-
+void draw_square(int x, int y, int size, t_data *d);
 #endif

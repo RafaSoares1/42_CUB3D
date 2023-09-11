@@ -1,1 +1,0 @@
-verificar se ha numero a seguir a virgula no F e no C

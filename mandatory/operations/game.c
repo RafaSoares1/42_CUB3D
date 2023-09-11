@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/11 18:01:36 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/09/11 22:17:38 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,43 @@ void	start_game(t_data *d)
 	mlx_loop(d->mlx_ptr);
 }
 
+void draw_square(int x, int y, int size, t_data *d)
+{
+  int i;
+  int j;
+
+	i = x;
+  while(i < x + size)
+	{
+		j = y;
+    while(j < y + size) 
+		{
+      mlx_pixel_put(d->mlx_ptr,d->win_ptr, i, j, 0x00FF00);
+			j++;			
+    }
+		i++;
+  }
+}
+
 void	draw_minimap(t_data *d)
+{
+	int y = 1;
+	int	x = 0;
+
+  while (y < d->count_lines)
+	{
+		x = 0;
+    while (d->map_utils->map[y][x])
+		{
+      if (d->map_utils->map[y][x] == '1')
+        draw_square(x * 50, y * 50, 50, d);
+			x++;
+    }
+		y++;
+  }
+}
+
+/* void	draw_minimap(t_data *d)
 {
 	int	minimap_width;
 	int	minimap_height;
@@ -86,7 +122,7 @@ void	draw_minimap(t_data *d)
 		}
 		y++;
 	}
-	/* while(i < minimap_height)
+	 while(i < minimap_height)
 	{
 		j = 0;
 		while(j < minimap_width)
@@ -95,10 +131,10 @@ void	draw_minimap(t_data *d)
 			j++;
 		}
 		i++;
-	} */
+	} 
 }
 
-/* void	draw_wall()
+ void	draw_wall()
 {
 	int	i;
 	int	j;
@@ -124,4 +160,4 @@ void	draw_floor()
 void	draw_player()
 {
 
-} */
+}  */
