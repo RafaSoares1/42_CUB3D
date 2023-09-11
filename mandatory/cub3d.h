@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/11 15:10:49 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:24:58 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@
 # include <X11/X.h>
 # include <fcntl.h>
 # include <unistd.h>
-# define SIZE 45
+# define HEIGHT 1080
+# define WIDTH 1920
+# define WALL 0xFF00
+# define FLOOR 0xFF0000
+# define PLAYER 0x000000
 
 typedef struct s_map
 {
@@ -114,5 +118,9 @@ void	check_letters(t_data *d);
 void	put_player_pos(t_data *d, char c);
 void	handle_invalid_input(t_data *d);
 int		check_flood_fill(t_data *d, char **map, int x, int y);
+
+//***************game.c***********************
+void	start_game(t_data *d);
+void	draw_minimap(t_data *d);
 
 #endif
