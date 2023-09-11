@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/07 15:49:51 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:10:49 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	free_double_pointer(char **str);
 void	ft_free_game(t_data *d);
 void	ft_free_game2(t_data *d);
 void	ft_no_leak(t_data *d, char *line);
+void	ft_no_leak2(t_data *d, char *line);
 
 
 //***************main.c*********************
@@ -93,6 +94,8 @@ void	ft_check_map_file(t_data *d, char *file_name);
 //***************rgb_utils.c******************
 void	put_rgb(t_data *d, char *line, int flag);
 void	put_fc_rgb(t_data *d, int flag, char *line);
+int		ft_check_next_comma(char *line);
+int		ft_verify_digits(char *str);
 
 //***************map_utils.c*******************
 void	map_to_file(t_data *d, char *file_name);
