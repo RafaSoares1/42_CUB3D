@@ -57,6 +57,8 @@ void	ft_free_game2(t_data *d)
 		free_double_pointer(d->map_utils->map);
 	if (d->map_utils->map_dup)
 		free_double_pointer(d->map_utils->map_dup);
+	if (d->map_utils->color_aux)
+		free_double_pointer(d->map_utils->color_aux);
 	if (d->map_utils->ea)
 		free(d->map_utils->ea);
 	if (d->map_utils->no)
@@ -77,6 +79,18 @@ void	ft_no_leak(t_data *d, char *line)
 		if (!line)
 			break ;
 		valid_info(d, line);
+		free(line);
+	}
+	close(d->fd);
+}
+
+void	ft_no_leak2(t_data *d, char *line)
+{
+	while (1)
+	{
+		line = get_next_line(d->fd);
+		if (!line)
+			break ;
 		free(line);
 	}
 	close(d->fd);

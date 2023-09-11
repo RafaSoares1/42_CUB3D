@@ -1,1 +1,1 @@
-verificar se há duplicados nos 6 primeiros elementos !
+verificar se ha numero a seguir a virgula no F e no C
