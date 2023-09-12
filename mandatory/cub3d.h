@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/12 10:57:54 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:03:00 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@
 # include <unistd.h>
 # define HEIGHT 1080
 # define WIDTH 1920
-# define WALL 0xFF00
-# define FLOOR 0xFF0000
-# define PLAYER 0x000000
+# define WALL 0xffffff
+# define FLOOR 0x000000
+# define GRID 0x838589
+# define PLAYER 0xfffb00
+# define SIZE 50
 
 typedef struct s_map
 {
@@ -122,5 +124,7 @@ int		check_flood_fill(t_data *d, char **map, int x, int y);
 //***************game.c***********************
 void	start_game(t_data *d);
 void	draw_minimap(t_data *d);
-void draw_square(int x, int y, int size, t_data *d);
+void	draw_grid(int x, int y, int color, t_data *d);
+void	draw_square(int x, int y, int color, t_data *d);
+void	draw_player(int x, int y, int color, t_data *d);
 #endif
