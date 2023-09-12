@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/12 12:37:50 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:48:13 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	start_game(t_data *d)
 	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
 	draw_minimap(d);
 	//mlx_hook(d->win_ptr, KeyPress, KeyPressMask, ft_keypress, &mlx);
-	mlx_hook(d->win_ptr, DestroyNotify, ButtonPressMask, ft_xbutton, &d);
+	mlx_hook(d->win_ptr, KeyPress, KeyPressMask, handle_input, d);
+	mlx_hook(d->win_ptr, DestroyNotify, ButtonPressMask, ft_xbutton, d);
 	mlx_loop(d->mlx_ptr);
 }
 
@@ -110,6 +111,7 @@ void draw_player(int x, int y, int color, t_data *d)
 	int	j;
 
 	j = 1;
+	put_player_pos(d, y, x);
 	mlx_pixel_put(d->mlx_ptr,d->win_ptr, x, y, color);
 	while(j < PLAYER_SIZE)
 	{

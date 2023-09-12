@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/12 12:37:41 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/09/12 15:35:26 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	print_matrix(t_data *d);
 
 //***************check.c***********************
 void	check_letters(t_data *d);
-void	put_player_pos(t_data *d, char c);
+void	put_player_pos(t_data *d, int y, int x);
 void	handle_invalid_input(t_data *d);
 int		check_flood_fill(t_data *d, char **map, int x, int y);
 
@@ -131,5 +131,9 @@ void	draw_player(int x, int y, int color, t_data *d);
 
 //***************close_window.c***********************
 int	ft_xbutton(t_data *d);
+
+//***************move.c***********************
+int	handle_input(int keysym, t_data *d);
+void	ft_move_player(t_data *d, int y, int x);
 
 #endif
