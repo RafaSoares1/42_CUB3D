@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/12 12:13:20 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:37:50 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	start_game(t_data *d)
 		return ;
 	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
 	draw_minimap(d);
+	//mlx_hook(d->win_ptr, KeyPress, KeyPressMask, ft_keypress, &mlx);
+	mlx_hook(d->win_ptr, DestroyNotify, ButtonPressMask, ft_xbutton, &d);
 	mlx_loop(d->mlx_ptr);
 }
 
@@ -65,19 +67,19 @@ void	draw_minimap(t_data *d)
 		{
 			if (d->map_utils->map[y][x] == '1')
 			{
-				draw_square(x * 50, y * 50, WALL, d);
-				draw_grid(x * 50, y * 50, GRID, d);
+				draw_square(x * 50, (y - 1) * 50, WALL, d);
+				draw_grid(x * 50, (y - 1) * 50, GRID, d);
 			}
 			if (d->map_utils->map[y][x] == '0')
 			{
-				draw_square(x * 50, y * 50, FLOOR, d);
-				draw_grid(x * 50, y * 50, GRID, d);
+				draw_square(x * 50, (y - 1) * 50, FLOOR, d);
+				draw_grid(x * 50, (y - 1) * 50, GRID, d);
 			}
 			if (d->map_utils->map[y][x] == 'N') //falta S, E e W
 			{
-				draw_square(x * 50, y * 50, FLOOR, d);
-				draw_grid(x * 50, y * 50, GRID, d);
-				draw_player((x * 50) + (SIZE / 2), (y * 50) + (SIZE / 2), PLAYER, d);
+				draw_square(x * 50, (y - 1) * 50, FLOOR, d);
+				draw_grid(x * 50, (y - 1) * 50, GRID, d);
+				draw_player((x * 50) + (SIZE / 2), ((y - 1) * 50) + (SIZE / 2), PLAYER, d);
 			}
 			x++;
 		}
@@ -105,17 +107,20 @@ void draw_square(int x, int y, int color, t_data *d)
 
 void draw_player(int x, int y, int color, t_data *d)
 {
-	int	i;
 	int	j;
 
-	i = x;
-	j = 1
-	while(j < x + 10)
+	j = 1;
+	mlx_pixel_put(d->mlx_ptr,d->win_ptr, x, y, color);
+	while(j < PLAYER_SIZE)
 	{
-		mlx_pixel_put(d->mlx_ptr,d->win_ptr, i, y, color);
-		mlx_pixel_put(d->mlx_ptr,d->win_ptr, i + j, y, color);
-		mlx_pixel_put(d->mlx_ptr,d->win_ptr, i - j, y, color);
+		mlx_pixel_put(d->mlx_ptr,d->win_ptr, x + j, y, color);
+		mlx_pixel_put(d->mlx_ptr,d->win_ptr, x - j, y, color);
 		j++;
 	}
-
+	j = 1;
+	while(j < PLAYER_SIZE + 5)
+	{
+		mlx_pixel_put(d->mlx_ptr,d->win_ptr, x, y - j, color);
+		j++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/12 12:03:00 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:37:41 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define GRID 0x838589
 # define PLAYER 0xfffb00
 # define SIZE 50
+# define PLAYER_SIZE 7
 
 typedef struct s_map
 {
@@ -127,4 +128,8 @@ void	draw_minimap(t_data *d);
 void	draw_grid(int x, int y, int color, t_data *d);
 void	draw_square(int x, int y, int color, t_data *d);
 void	draw_player(int x, int y, int color, t_data *d);
+
+//***************close_window.c***********************
+int	ft_xbutton(t_data *d);
+
 #endif

@@ -29,7 +29,7 @@ SRCS = 	mandatory/main.c\
 		mandatory/operations/map_utils2.c\
 		mandatory/operations/check.c\
 		mandatory/operations/game.c\
-
+		mandatory/operations/close_window.c\
 
 OBJS = $(SRCS:%.c=%.o)
 
