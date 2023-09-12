@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/11 22:17:38 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:28:50 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,32 @@ void draw_square(int x, int y, int size, t_data *d)
 	i = x;
   while(i < x + size)
 	{
-		j = y;
-    while(j < y + size) 
-		{
-      mlx_pixel_put(d->mlx_ptr,d->win_ptr, i, j, 0x00FF00);
-			j++;			
-    }
+    mlx_pixel_put(d->mlx_ptr,d->win_ptr, i, y, 0x00FF00);			
 		i++;
+  }
+	i = x;
+	while(i < x + size)
+	{
+    mlx_pixel_put(d->mlx_ptr,d->win_ptr, i, y + size - 1, 0x00FF00);			
+		i++;
+  }
+	j = y;
+	while(j < y + size)
+	{
+    mlx_pixel_put(d->mlx_ptr,d->win_ptr, x, j, 0x00FF00);			
+		j++;
+  }
+	j = y;
+	while(j < y + size)
+	{
+    mlx_pixel_put(d->mlx_ptr,d->win_ptr, x + size - 1, j, 0x00FF00);			
+		j++;
   }
 }
 
 void	draw_minimap(t_data *d)
 {
-	int y = 1;
+	int y = 0;
 	int	x = 0;
 
   while (y < d->count_lines)
