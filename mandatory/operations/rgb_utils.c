@@ -49,6 +49,7 @@ void	put_rgb(t_data *d, char *line, int flag)
 	else if (flag == 2)
 		put_fc_rgb(d, flag, line);
 	free_double_pointer(d->map_utils->color_aux);
+	//printf("%s\n", d->map_utils->f_color[0]);
 }
 
 void	put_fc_rgb(t_data *d, int flag, char *line)
@@ -59,7 +60,7 @@ void	put_fc_rgb(t_data *d, int flag, char *line)
 	if (flag == 1)
 	{
 		temp = ft_strtrim(line, " \t\n");
-		d->map_utils->f_color = ft_split(temp, ',');
+		d->map_utils->f_color = ft_split(temp + 2, ',');
 		d->map_utils->flag_f = 1;
 	}
 	else if (flag == 2)

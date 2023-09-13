@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/12 15:35:26 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:19:13 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,30 @@
 # define SIZE 50
 # define PLAYER_SIZE 7
 
+
+typedef struct s_image
+{
+	void	*img;
+	char	*addr;
+	int		bpp; //bits per pixel
+	int		line_length;
+	int		endian;
+}	t_image;
+
 typedef struct s_map
 {
 	char	**map;
 	char	**map_dup;
-	char *no;
-	char *so;
-	char *we;
-	char *ea;
-	char **f_color;
+	char 	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
 	int		flag_c;
 	int		flag_f;
 	char	player_pos;
-	char **c_color;
-	char **color_aux;
+	char	**f_color;
+	char	**c_color;
+	char	**color_aux;
 	int		skip_count;
 }	t_map;
 
@@ -54,6 +64,7 @@ typedef struct s_data
 	int		count_lines;
 	int		line_length;
 	t_map *map_utils;
+	t_image *img;
 	int		p_y;
 	int		p_x;
 	int		x;
@@ -128,6 +139,10 @@ void	draw_minimap(t_data *d);
 void	draw_grid(int x, int y, int color, t_data *d);
 void	draw_square(int x, int y, int color, t_data *d);
 void	draw_player(int x, int y, int color, t_data *d);
+int	game_loop(t_data *d);
+void	draw_raycast(t_data *d);
+void	draw_floor_celling(t_data *d);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 //***************close_window.c***********************
 int	ft_xbutton(t_data *d);
