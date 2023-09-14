@@ -1,0 +1,25 @@
+draw_raycast() in game.c
+
+Imagine you're making a video game where you control a character.
+In this game, you want to create a realistic view from the character's perspective, like in a first-person shooter game.
+
+1-Position of the Player: You start by defining where the player is on the game map.
+This is done using two numbers, posX (horizontal position) and posY (vertical position).
+
+2-Direction the Player is Facing: You also need to know which way the player is looking.
+This is represented by two numbers, dirX (horizontal direction) and dirY (vertical direction).
+So, if dirX is -1, it means the player is looking to the left.
+
+3-Camera Plane: In addition to the direction, you need to define the camera plane.
+The camera plane is like a flat surface that the player sees.
+It's always perpendicular (at a right angle) to the direction the player is looking, but you can change how wide it is.
+This width determines how much the player can see. In the code, planeX is set to 0 (horizontal direction),
+and planeY is set to 0.66 (vertical direction). This creates a specific field of view (FOV) for the player,
+which is similar to a flashlight beam.
+
+A smaller FOV means the player can see less in their surroundings.
+A larger FOV means the player can see more, but it might look distorted.
+
+4-Maintaining Perpendicularity and Length: As you move and rotate the player using input keys, the dir (direction) and plane (camera plane)
+values will change. However, they will always remain perpendicular to each other (like a cross) and keep the same
+length (meaning the FOV won't change, it will stay as intended).

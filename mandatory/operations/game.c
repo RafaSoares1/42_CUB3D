@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/13 16:19:05 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:43:52 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	start_game(t_data *d)
 		return ;
 	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
 	d->img = ft_calloc(1, sizeof(t_image));
+	ft_init_stack3(d);
 	d->img->img = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);
 	d->img->addr = mlx_get_data_addr(d->img->img, &d->img->bpp, &d->img->line_length, &d->img->endian); 
 	//draw_minimap(d);
@@ -33,14 +34,98 @@ void	start_game(t_data *d)
 int	game_loop(t_data *d)//funcao principal para renders
 {
 	draw_raycast(d);
-	
+	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->img, 0, 0);
 	return (0);
 }
 
 void	draw_raycast(t_data *d)
 {
+	int color;
 	draw_floor_celling(d);
-	
+	//Position of the Player in d->p_y and p_x;
+	d->dir_x = 0, d->dir_y = -1;//initial direction vector = NORTH
+	d->plane_x = 1, d->plane_y = 0;
+	d->i = 0;
+	while(d->i < WIDTH)
+	{
+		d->camera_x = 2 * d->i / (double)WIDTH - 1;
+		d->raydir_x = d->dir_x + d->plane_x * d->camera_x;
+		d->raydir_y = d->dir_y + d->plane_y * d->camera_x;
+		d->mapx = d->p_x;
+		d->mapy = d->p_y;
+		if (d->raydir_x == 0)
+			d->delta_dist_x = 1e30;
+		else
+			d->delta_dist_x = fabs(1 / d->raydir_x);
+		if (d->raydir_y == 0)
+			d->delta_dist_y = 1e30;
+		else
+			d->delta_dist_y = fabs(1 / d->raydir_y);
+		d->hit = 0;
+
+		if (d->raydir_x < 0)
+		{
+			d->stepx = -1;
+			d->side_dist_x = (d->p_x - d->mapx) * d->delta_dist_x;
+		}
+		else
+		{
+			d->stepx = 1;
+			d->side_dist_x = (d->mapx + 1.0 - d->p_x) * d->delta_dist_x;
+		}
+		if (d->raydir_y < 0)
+		{
+			d->stepy = -1;
+			d->side_dist_y = (d->p_y - d->mapx) * d->delta_dist_y;
+		}
+		else
+		{
+			d->stepy = 1;
+			d->side_dist_y = (d->mapy + 1.0 - d->p_y) * d->delta_dist_y;
+		}
+		while (!d->hit)
+		{
+			if ( d->side_dist_x < d->side_dist_y)
+			{
+				d->side_dist_x += d->delta_dist_x;
+				d->mapx += d->stepx;
+				d->side = 0;
+			}
+			else
+			{
+				d->side_dist_y += d->delta_dist_y;
+				d->mapy += d->stepy;
+				d->side = 1;
+			}
+			if (d->map_utils->map[d->mapx][d->mapy] == '1')
+				d->hit = 1;
+		}
+		if (d->side == 0)
+			d->perp_wall_dist = (d->side_dist_x - d->delta_dist_x);
+		else
+			d->perp_wall_dist = (d->side_dist_y - d->delta_dist_y);
+		if (d->perp_wall_dist)
+			d->line_height = (int)(HEIGHT / d->perp_wall_dist);
+		else
+			d->line_height = HEIGHT;
+		d->draw_start = -d->line_height / 2 + HEIGHT / 2;
+		if (d->draw_start < 0)
+			d->draw_start = 0;
+		d->draw_end = d->line_height / 2 + HEIGHT / 2;
+		if (d->draw_end >= HEIGHT)
+			d->draw_end = HEIGHT - 1;
+		if (d->side == 1)
+			color = 0xffc0cb;
+		else
+			color = 0xfff4aa;
+		int j = d->draw_start;
+		while (j < d->draw_end)
+		{
+			my_mlx_pixel_put(d, d->i, j, color);
+			j++;
+		}
+		d->i++;
+	}
 }
 
 void	draw_floor_celling(t_data *d)

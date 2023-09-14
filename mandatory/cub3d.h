@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/13 12:19:13 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:25:40 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <X11/X.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <math.h>
 # define HEIGHT 1080
 # define WIDTH 1920
 # define WALL 0xffffff
@@ -67,6 +68,27 @@ typedef struct s_data
 	t_image *img;
 	int		p_y;
 	int		p_x;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	camera_x;
+	double	raydir_x;
+	double	raydir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int			stepx;
+	int			stepy;
+	int			hit;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	int			mapx;
+	int			mapy;
 	int		x;
 	int		y;
 	int		fd;
@@ -75,8 +97,12 @@ typedef struct s_data
 }	t_data;
 
 
-//****************utils.c********************
+//****************init.c*********************
 void	ft_init_stack(t_data *d);
+void	ft_init_stack2(t_data *d);
+void	ft_init_stack3(t_data *d);
+
+//****************utils.c********************
 int 	ft_count(char *str, char c);
 void	finish_error(char *str, int i);
 int		ft_search(char *str, char c);
@@ -150,5 +176,4 @@ int	ft_xbutton(t_data *d);
 //***************move.c***********************
 int	handle_input(int keysym, t_data *d);
 void	ft_move_player(t_data *d, int y, int x);
-
 #endif

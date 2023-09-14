@@ -31,6 +31,7 @@ SRCS = 	mandatory/main.c\
 		mandatory/operations/game.c\
 		mandatory/operations/move.c\
 		mandatory/operations/close_window.c\
+		mandatory/operations/init.c\
 
 OBJS = $(SRCS:%.c=%.o)
 
