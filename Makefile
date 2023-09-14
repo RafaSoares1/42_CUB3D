@@ -44,6 +44,8 @@ $(MINILIBX):
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINILIBX) $(MFLAGS) -o $(NAME)
+	@mkdir -p obj
+	@mv $(OBJS) obj/
 	clear
 	echo "$(BLUE) ██████╗██╗   ██╗██████╗ ██████╗ ██████╗ $(RESET)"
 	echo "$(WHITE)██╔════╝██║   ██║██╔══██╗╚════██╗██╔══██╗$(RESET)"
@@ -58,7 +60,7 @@ clean:
 	@$(MAKE) clean -C ./libft
 	@$(MAKE) clean -C ./minilibx-linux
 	@$(RM) $(OBJS)
-	clear
+	@$(RM) -r obj
 	echo "$(RED)Object files have been deleted!$(RESET)"
 
 fclean: clean

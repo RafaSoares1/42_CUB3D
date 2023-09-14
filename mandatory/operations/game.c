@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/13 12:51:23 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:19:05 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	start_game(t_data *d)
 	//draw_minimap(d);
 	//mlx_hook(d->win_ptr, KeyPress, KeyPressMask, ft_keypress, &mlx);
 	
-	//mlx_hook(d->win_ptr, KeyPress, KeyPressMask, handle_input, d);
+	mlx_hook(d->win_ptr, KeyPress, KeyPressMask, handle_input, d);
 	mlx_hook(d->win_ptr, DestroyNotify, ButtonPressMask, ft_xbutton, d);
 	mlx_loop_hook(d->mlx_ptr, game_loop, d);
 	mlx_loop(d->mlx_ptr);

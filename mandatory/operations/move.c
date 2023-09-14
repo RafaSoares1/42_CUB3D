@@ -14,11 +14,12 @@
 
 int	handle_input(int keysym, t_data *d)
 {
+	(void) d;
 	if (keysym == 65307)
 	{
 		exit (2);
 	}
-	if (keysym == 119)//W
+	/* if (keysym == 119)//W
 	{
 		draw_player(d->p_x, d->p_y, FLOOR, d);
 		ft_move_player(d, d->p_y - 1, d->p_x);
@@ -37,7 +38,7 @@ int	handle_input(int keysym, t_data *d)
 	{
 		draw_player(d->p_x, d->p_y, FLOOR, d);
 		ft_move_player(d, d->p_y, d->p_x + 1);
-	}	
+	}	 */
 	return (0);
 }
 
