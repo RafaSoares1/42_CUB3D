@@ -32,7 +32,7 @@ char	* fill_matrix_line(t_data *d, char *str)//aqui colocar as alteracoes dos ta
 			if(tab_count == 8)
 				tab_count = 0;
 			while(tab_count++ <= 8)
-				line[j++] = '9';
+				line[j++] = ' ';
 			tab_count = 0;
 			i++;
 		}
@@ -46,14 +46,14 @@ char	* fill_matrix_line(t_data *d, char *str)//aqui colocar as alteracoes dos ta
 			i++;
 			j++;
 		}
-		
+
 	}
-	while (i < d->line_length)
+	while (j < d->line_length)
 	{
-		line[i] = '#';
-		i++;
+		line[j] = '#';
+		j++;
 	}
-	line[i] = '\0';
+	line[j] = '\0';
 	return (line);
 }
 

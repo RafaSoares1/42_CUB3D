@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:20:57 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/18 15:01:59 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:25:42 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ void	ft_fill_map_index(t_data *d)
 		d->i++;
 	}
 	close(d->fd);
-	print_matrix(d);
 	fill_rest(d);
+	print_matrix(d);
 }
 
 void	put_first_last(t_data *d)
