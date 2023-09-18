@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/18 14:58:03 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/18 18:38:11 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct s_data
 
 //****************init.c*********************
 void	ft_init_stack(t_data *d);
+void	ft_init_stack1(t_data *d);
 void	ft_init_stack2(t_data *d);
 void	ft_init_stack3(t_data *d);
 
@@ -156,6 +157,7 @@ int		strlength(char *str);
 
 //***************check.c***********************
 void	check_letters(t_data *d);
+void	check_letters2(t_data *d, char c);
 void	put_player_pos(t_data *d, int y, int x);
 void	handle_invalid_input(t_data *d);
 int		check_flood_fill(t_data *d, char **map, int x, int y);
@@ -166,7 +168,7 @@ void	draw_minimap(t_data *d);
 void	draw_grid(int x, int y, int color, t_data *d);
 void	draw_square(int x, int y, int color, t_data *d);
 void	draw_player(int x, int y, int color, t_data *d);
-int	game_loop(t_data *d);
+int		game_loop(t_data *d);
 void	draw_raycast(t_data *d);
 void	draw_floor_celling(t_data *d);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -177,4 +179,8 @@ int	ft_xbutton(t_data *d);
 //***************move.c***********************
 int	handle_input(int keysym, t_data *d);
 void	ft_move_player(t_data *d, int y, int x);
+
+//**************error.c***********************
+void	error_handling(char *line, t_data *d, char *str);
+
 #endif

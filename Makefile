@@ -32,6 +32,7 @@ SRCS = 	mandatory/main.c\
 		mandatory/operations/move.c\
 		mandatory/operations/close_window.c\
 		mandatory/operations/init.c\
+		mandatory/operations/error.c\
 
 OBJS = $(SRCS:%.c=%.o)
 

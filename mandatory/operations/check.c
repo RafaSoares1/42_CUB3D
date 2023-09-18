@@ -27,11 +27,10 @@ void	check_letters(t_data *d)
 		{
 			c = d->map_utils->map[d->y][d->x];
 			if (c == '1' || c == '0' || c == '#')
-					d->x++;
+				d->x++;
 			else if ((c == 'N' || c == 'S' || c == 'E' || c == 'W') && f == 0)
 			{
-				d->map_utils->player_pos = c;
-				put_player_pos(d, d->y, d->x);
+				check_letters2(d, c);
 				f = 1;
 				d->x++;
 			}
@@ -40,6 +39,12 @@ void	check_letters(t_data *d)
 		}
 		d->y++;
 	}
+}
+
+void	check_letters2(t_data *d, char c)
+{
+	d->map_utils->player_pos = c;
+	put_player_pos(d, d->y, d->x);
 }
 
 void	put_player_pos(t_data *d, int y, int x)
@@ -62,7 +67,7 @@ int	check_flood_fill(t_data *d, char **map, int x, int y)
 		|| map[y][x] == '1' || map[y][x] == 'X')
 		return (0);
 	if (map[y][x] == '#')
-	{	
+	{
 		hastag_count++;
 		map[y][x] = 'X';
 		return (0);

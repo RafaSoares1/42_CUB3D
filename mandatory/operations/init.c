@@ -35,6 +35,11 @@ void	ft_init_stack(t_data *d)
 	d->delta_dist_x = 0;
 	d->delta_dist_y = 0;
 	d->perp_wall_dist = 0;
+	ft_init_stack1(d);
+}
+
+void	ft_init_stack1(t_data *d)
+{
 	d->stepx = 0;
 	d->stepy = 0;
 	d->hit = 0;

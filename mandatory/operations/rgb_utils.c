@@ -18,30 +18,15 @@ void	put_rgb(t_data *d, char *line, int flag)
 
 	i = 0;
 	if (ft_count(line, ',') != 2 || ft_check_next_comma(line) == 1)
-	{
-		free(line);
-		ft_no_leak2(d, line);
-		ft_free_game2(d);
-		finish_error("Error: Wrong number of color values!\n", 2);
-	}
+		error_handling(line, d, "Error: Wrong number of color values!\n");
 	d->map_utils->color_aux = ft_split(line + 2, ',');
 	while (i < 3)
 	{
 		if (ft_verify_digits(d->map_utils->color_aux[i]))
-		{
-			free(line);
-			ft_no_leak2(d, line);
-			ft_free_game2(d);
-			finish_error("Error: Wrong value in RGB!\n", 2);
-		}
+			error_handling(line, d, "Error: Wrong value in RGB!\n");
 		if (!(ft_atoi(d->map_utils->color_aux[i]) >= 0
 				&& ft_atoi(d->map_utils->color_aux[i]) <= 255))
-		{
-			free(line);
-			ft_no_leak2(d, line);
-			ft_free_game2(d);
-			finish_error("Error: Wrong value in RGB!\n", 2);
-		}
+			error_handling(line, d, "Error: Wrong value in RGB!\n");
 		i++;
 	}
 	if (flag == 1)
@@ -49,7 +34,6 @@ void	put_rgb(t_data *d, char *line, int flag)
 	else if (flag == 2)
 		put_fc_rgb(d, flag, line);
 	free_double_pointer(d->map_utils->color_aux);
-	//printf("%s\n", d->map_utils->f_color[0]);
 }
 
 void	put_fc_rgb(t_data *d, int flag, char *line)
@@ -78,7 +62,7 @@ int	ft_check_next_comma(char *line)
 	int	i;
 
 	i = 0;
-	while(line[i])
+	while (line[i])
 	{
 		if (line[i] == ',')
 		{
@@ -95,9 +79,9 @@ int	ft_verify_digits(char *str)
 	int	i;
 
 	i = 0;
-	while(str[i] && str[i] != '\n')
+	while (str[i] && str[i] != '\n')
 	{
-		if(!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]))
 			return (1);
 		i++;
 	}
