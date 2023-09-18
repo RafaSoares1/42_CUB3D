@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/14 14:25:40 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:58:03 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ typedef struct s_data
 	int		line_length;
 	t_map *map_utils;
 	t_image *img;
-	int		p_y;
-	int		p_x;
-	double	dir_x;
-	double	dir_y;
+	float	p_y;
+	float	p_x;
+	float	dir_x;
+	float	dir_y;
 	double	plane_x;
 	double	plane_y;
 	double	camera_x;
@@ -152,6 +152,7 @@ void	put_first_last(t_data *d);
 char	*fill_matrix_line(t_data *d, char *str);
 void	fill_rest(t_data *d);
 void	print_matrix(t_data *d);
+int		strlength(char *str);
 
 //***************check.c***********************
 void	check_letters(t_data *d);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/14 14:43:52 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:02:06 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	draw_raycast(t_data *d)
 				d->mapy += d->stepy;
 				d->side = 1;
 			}
-			if (d->map_utils->map[d->mapx][d->mapy] == '1')
+			if (d->map_utils->map[d->mapy][d->mapx] == '1')
 				d->hit = 1;
 		}
 		if (d->side == 0)

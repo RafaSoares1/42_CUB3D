@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:20:57 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/07 12:10:20 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:01:59 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,37 @@ void	map_to_file(t_data *d, char *file_name)
 	}
 	while (ft_search(d->line, '1') == 1)
 	{
-		if ((int)ft_strlen(d->line) > d->line_length)
-			d->line_length = (int)ft_strlen(d->line);
+		if (strlength(d->line) > d->line_length)
+			d->line_length = strlength(d->line);
 		write(d->temp_fd, d->line, ft_strlen(d->line));
 		free(d->line);
 		d->line = get_next_line(d->fd);
 	}
 	map_to_file2(d);
+}
+
+int	strlength(char *str)
+{
+	int i;
+	int	tab_count;
+	int	j;
+
+	tab_count = 0;
+	i = 0;
+	j = 0;
+	while(str[i])
+	{
+		if(j == 8)
+			j = 0;
+		if(str[i] =='\t')
+		{
+			tab_count = tab_count + (8 - j);
+			j = 0;
+		}
+		j++;
+		i++;
+	}
+	return (i + tab_count);
 }
 
 void	map_to_file2(t_data *d)
@@ -78,6 +102,7 @@ void	ft_fill_map_index(t_data *d)
 		d->i++;
 	}
 	close(d->fd);
+	print_matrix(d);
 	fill_rest(d);
 }
 

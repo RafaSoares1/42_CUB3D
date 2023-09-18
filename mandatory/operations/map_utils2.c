@@ -12,25 +12,47 @@
 
 #include "../cub3d.h"
 
-char	*fill_matrix_line(t_data *d, char *str)
+char	* fill_matrix_line(t_data *d, char *str)//aqui colocar as alteracoes dos tabs
 {
 	int		i;
+	int		j;
 	char	*line;
+	int		tab_count;
+
+	tab_count = 0;
 
 	i = 0;
+	j = 0;
 	line = malloc(sizeof(char) * (d->line_length + 1));
 	while (str[i])
 	{
-		if (str[i] == '\n')
+		tab_count++;
+		if(str[i] == '\t')
+		{
+			if(tab_count == 8)
+				tab_count = 0;
+			while(tab_count++ <= 8)
+				line[j++] = '9';
+			tab_count = 0;
+			i++;
+		}
+		else
+		{
+			if (tab_count >= 7)
+				tab_count = 0;
+			if (str[i] == '\n')
 			str[i] = '#';
-		line[i] = str[i];
-		i++;
+			line[j] = str[i];
+			i++;
+			j++;
+		}
+		
 	}
 	while (i < d->line_length)
 	{
 		line[i] = '#';
 		i++;
-	}	
+	}
 	line[i] = '\0';
 	return (line);
 }
@@ -57,7 +79,7 @@ void	fill_rest(t_data *d)
 	}
 }
 
-/* void	print_matrix(t_data *d)
+void	print_matrix(t_data *d)
 {
 	int	i;
 	int	j;
@@ -77,4 +99,4 @@ void	fill_rest(t_data *d)
 		i++;
 	}
 	write(1, "\n", 1);
-} */
+}
