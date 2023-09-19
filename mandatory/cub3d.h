@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/18 18:38:11 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:19:21 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ void	put_path(t_data *d, char *line, int flag);
 void	free_double_pointer(char **str);
 void	ft_free_game(t_data *d);
 void	ft_free_game2(t_data *d);
+void	ft_free_game3(t_data *d);
 void	ft_no_leak(t_data *d, char *line);
 void	ft_no_leak2(t_data *d, char *line);
 

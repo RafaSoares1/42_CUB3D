@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/18 14:02:06 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:50:35 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	draw_raycast(t_data *d)
 	draw_floor_celling(d);
 	//Position of the Player in d->p_y and p_x;
 	d->dir_x = 0, d->dir_y = -1;//initial direction vector = NORTH
-	d->plane_x = 1, d->plane_y = 0;
+	d->plane_x = 0.66, d->plane_y = 0;
 	d->i = 0;
 	while(d->i < WIDTH)
 	{
