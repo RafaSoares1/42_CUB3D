@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/19 11:50:35 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/20 12:18:39 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	start_game(t_data *d)
 	d->img = ft_calloc(1, sizeof(t_image));
 	ft_init_stack3(d);
 	d->img->img = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);
-	d->img->addr = mlx_get_data_addr(d->img->img, &d->img->bpp, &d->img->line_length, &d->img->endian); 
+	d->img->addr = mlx_get_data_addr(d->img->img, &d->img->bpp, &d->img->line_length, &d->img->endian);
 	//draw_minimap(d);
 	//mlx_hook(d->win_ptr, KeyPress, KeyPressMask, ft_keypress, &mlx);
-	
+
 	mlx_hook(d->win_ptr, KeyPress, KeyPressMask, handle_input, d);
 	mlx_hook(d->win_ptr, DestroyNotify, ButtonPressMask, ft_xbutton, d);
 	mlx_loop_hook(d->mlx_ptr, game_loop, d);
@@ -43,16 +43,34 @@ void	draw_raycast(t_data *d)
 	int color;
 	draw_floor_celling(d);
 	//Position of the Player in d->p_y and p_x;
-	d->dir_x = 0, d->dir_y = -1;//initial direction vector = NORTH
-	d->plane_x = 0.66, d->plane_y = 0;
+	if(d->map_utils->player_pos == 'N')
+	{
+		d->dir_x = 0, d->dir_y = -1;//initial direction vector = NORTH
+		d->plane_x = 0.66, d->plane_y = 0;
+	}
+	if(d->map_utils->player_pos == 'S')
+	{
+		d->dir_x = 0, d->dir_y = 1;//initial direction vector = SOUTH
+		d->plane_x = -0.66, d->plane_y = 0;
+	}
+	if(d->map_utils->player_pos == 'E')
+	{
+		d->dir_x = 1, d->dir_y = 0;//initial direction vector = EAST
+		d->plane_x = 0, d->plane_y = 0.66;
+	}
+	if(d->map_utils->player_pos == 'W')
+	{
+		d->dir_x = -1, d->dir_y = 0;//initial direction vector = WEST
+		d->plane_x = 0, d->plane_y = -0.66;
+	}
 	d->i = 0;
 	while(d->i < WIDTH)
 	{
 		d->camera_x = 2 * d->i / (double)WIDTH - 1;
 		d->raydir_x = d->dir_x + d->plane_x * d->camera_x;
 		d->raydir_y = d->dir_y + d->plane_y * d->camera_x;
-		d->mapx = d->p_x;
-		d->mapy = d->p_y;
+		d->mapx = (int)d->p_x;
+		d->mapy = (int)d->p_y;
 		if (d->raydir_x == 0)
 			d->delta_dist_x = 1e30;
 		else
@@ -62,7 +80,6 @@ void	draw_raycast(t_data *d)
 		else
 			d->delta_dist_y = fabs(1 / d->raydir_y);
 		d->hit = 0;
-
 		if (d->raydir_x < 0)
 		{
 			d->stepx = -1;
@@ -76,7 +93,7 @@ void	draw_raycast(t_data *d)
 		if (d->raydir_y < 0)
 		{
 			d->stepy = -1;
-			d->side_dist_y = (d->p_y - d->mapx) * d->delta_dist_y;
+			d->side_dist_y = (d->p_y - d->mapy) * d->delta_dist_y;
 		}
 		else
 		{
