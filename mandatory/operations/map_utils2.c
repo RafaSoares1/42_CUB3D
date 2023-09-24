@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-char	* fill_matrix_line(t_data *d, char *str)
+char	*fill_matrix_line(t_data *d, char *str)
 {
 	int		i;
 	int		j;

@@ -49,8 +49,8 @@ void	check_letters2(t_data *d, char c)
 
 void	put_player_pos(t_data *d, int y, int x)
 {
-	d->p_y = y;
-	d->p_x = x;
+	d->p_y = y + 0.5;
+	d->p_x = x + 0.5;
 }
 
 void	handle_invalid_input(t_data *d)

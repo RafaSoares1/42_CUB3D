@@ -12,21 +12,6 @@
 
 #include "../cub3d.h"
 
-void	free_double_pointer(char **str)
-{
-	int	i;
-
-	i = 0;
-	{
-		while (str[i])
-		{
-			free(str[i]);
-			i++;
-		}
-	}
-	free(str);
-}
-
 void	ft_free_game(t_data *d)
 {
 	if (d->map_utils->flag_c == 1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/19 11:19:21 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:59:53 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,13 +125,14 @@ void	error_in_elem(t_data *d, char *line);
 void	put_path(t_data *d, char *line, int flag);
 
 //****************free.c********************
-void	free_double_pointer(char **str);
 void	ft_free_game(t_data *d);
 void	ft_free_game2(t_data *d);
 void	ft_free_game3(t_data *d);
 void	ft_no_leak(t_data *d, char *line);
 void	ft_no_leak2(t_data *d, char *line);
 
+//****************free2.c********************
+void	free_double_pointer(char **str);
 
 //***************main.c*********************
 int		main(int ac, char **av);
