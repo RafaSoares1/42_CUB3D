@@ -29,8 +29,11 @@ SRCS = 	mandatory/main.c\
 		mandatory/operations/map_utils.c\
 		mandatory/operations/map_utils2.c\
 		mandatory/operations/check.c\
+		mandatory/operations/minimap.c\
+		mandatory/operations/movement.c\
 		mandatory/operations/game.c\
-		mandatory/operations/move.c\
+		mandatory/operations/game2.c\
+		mandatory/operations/key_handle.c\
 		mandatory/operations/close_window.c\
 		mandatory/operations/init.c\
 		mandatory/operations/error.c\
@@ -47,7 +50,7 @@ $(MINILIBX):
 	@$(MAKE) -C ./minilibx-linux
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINILIBX) $(MFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINILIBX) $(MFLAGS) -o $(NAME) -lm
 	@mkdir -p obj
 	@mv $(OBJS) obj/
 	clear

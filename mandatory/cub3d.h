@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/21 18:59:53 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:27:45 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ typedef struct s_data
 	t_image *img;
 	float	p_y;
 	float	p_x;
-	float	dir_x;
-	float	dir_y;
+	double	dir_x;
+	double	dir_y;
 	double	plane_x;
 	double	plane_y;
 	double	camera_x;
@@ -94,6 +94,7 @@ typedef struct s_data
 	int		fd;
 	int		temp_fd;
 	int		i;
+	char	key_press;
 }	t_data;
 
 
@@ -166,20 +167,36 @@ int		check_flood_fill(t_data *d, char **map, int x, int y);
 
 //***************game.c***********************
 void	start_game(t_data *d);
-void	draw_minimap(t_data *d);
-void	draw_grid(int x, int y, int color, t_data *d);
-void	draw_square(int x, int y, int color, t_data *d);
-void	draw_player(int x, int y, int color, t_data *d);
 int		game_loop(t_data *d);
 void	draw_raycast(t_data *d);
 void	draw_floor_celling(t_data *d);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
-//***************close_window.c***********************
-int	ft_xbutton(t_data *d);
+//***************game2.c***********************
+void	direction(t_data *d);
+void	ray_calc(t_data *d);
+void	check_side(t_data *d);
+void	get_hit(t_data *d);
+void	ray_values(t_data *d);
 
-//***************move.c***********************
-int	handle_input(int keysym, t_data *d);
+//***************movement.c********************
+int		ft_movs(t_data *d);
+void	move_vertical(t_data *d);
+void	move_horizontal(t_data *d);
+void	rotate_player(t_data *d);
+
+//***************minimap.c***********************
+void	draw_minimap(t_data *d);
+void	draw_grid(int x, int y, int color, t_data *d);
+void	draw_square(int x, int y, int color, t_data *d);
+void	draw_player(int x, int y, int color, t_data *d);
+
+//***************close_window.c***********************
+int		ft_xbutton(t_data *d);
+
+//***************key_handle.c***********************
+int		handle_input(int keysym, t_data *d);
+int		release_key(int keysym, t_data *d);
 void	ft_move_player(t_data *d, int y, int x);
 
 //**************error.c***********************

@@ -52,6 +52,7 @@ void	ft_init_stack1(t_data *d)
 	d->fd = 0;
 	d->temp_fd = 0;
 	d->i = 0;
+	d->key_press = 'u';
 	ft_init_stack2(d);
 }
 
