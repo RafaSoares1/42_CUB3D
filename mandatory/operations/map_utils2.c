@@ -12,6 +12,29 @@
 
 #include "../cub3d.h"
 
+void	put_first_last(t_data *d)
+{
+	int	i;
+
+	i = 0;
+	d->map_utils->map[0] = malloc(sizeof(char) * (d->line_length + 1));
+	d->map_utils->map[d->count_lines - 1] = malloc(sizeof(char)
+			* (d->line_length + 1));
+	while (i < d->line_length)
+	{
+		d->map_utils->map[0][i] = '#';
+		i++;
+	}
+	d->map_utils->map[0][i] = '\0';
+	i = 0;
+	while (i < d->line_length)
+	{
+		d->map_utils->map[d->count_lines - 1][i] = '#';
+		i++;
+	}
+	d->map_utils->map[d->count_lines - 1][i] = '\0';
+}
+
 char	*fill_matrix_line(t_data *d, char *str)
 {
 	int		i;
@@ -40,7 +63,7 @@ char	*fill_matrix_line(t_data *d, char *str)
 			if (tab_count >= 7)
 				tab_count = 0;
 			if (str[i] == '\n')
-			str[i] = '#';
+				str[i] = '#';
 			line[j] = str[i];
 			i++;
 			j++;
@@ -76,25 +99,3 @@ void	fill_rest(t_data *d)
 		finish_error("Error: Map is not closed!\n", 2);
 	}
 }
-
-/* void	print_matrix(t_data *d)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	printf("\n-----------ORIGINAL---------\n");
-	while (d->map_utils->map[i])
-	{
-		j = 0;
-		while (d->map_utils->map[i][j])
-		{
-			write(1, &d->map_utils->map[i][j], 1);
-			j++;
-		}
-		write(1, "\n", 1);
-		i++;
-	}
-	write(1, "\n", 1);
-} */

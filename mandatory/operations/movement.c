@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:11 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/26 15:06:29 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/26 19:12:15 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,20 @@ void	move_vertical(t_data *d)
 {
 	if (d->key_press == 'w')
 	{
-		if (d->map_utils->map[(int)(d->p_y + d->dir_y * 0.2)][(int) d->p_x] != '1')
+		if (d->map_utils->map[(int)(d->p_y + d->dir_y * 0.2)]
+			[(int) d->p_x] != '1')
 			d->p_y += d->dir_y * 0.2;
-		if (d->map_utils->map[(int)d->p_y][(int)(d->p_x + d->dir_x * 0.2)] != '1')
+		if (d->map_utils->map[(int)d->p_y]
+			[(int)(d->p_x + d->dir_x * 0.2)] != '1')
 			d->p_x += d->dir_x * 0.2;
-	}	
+	}
 	else
 	{
-		if (d->map_utils->map[(int)(d->p_y - d->dir_y * 0.2)][(int) d->p_x] != '1')
+		if (d->map_utils->map[(int)(d->p_y - d->dir_y * 0.2)]
+			[(int) d->p_x] != '1')
 			d->p_y -= d->dir_y * 0.2;
-		if (d->map_utils->map[(int)d->p_y][(int)(d->p_x - d->dir_x * 0.2)] != '1')
+		if (d->map_utils->map[(int)d->p_y]
+			[(int)(d->p_x - d->dir_x * 0.2)] != '1')
 			d->p_x -= d->dir_x * 0.2;
 	}
 }
@@ -54,26 +58,30 @@ void	move_horizontal(t_data *d)
 {
 	if (d->key_press == 'd')
 	{
-		if (d->map_utils->map[(int)(d->p_y + d->dir_x * 0.2)][(int) d->p_x] != '1')
+		if (d->map_utils->map[(int)(d->p_y + d->dir_x * 0.2)]
+			[(int) d->p_x] != '1')
 			d->p_y += d->dir_x * 0.2;
-		if (d->map_utils->map[(int)d->p_y][(int) (int)(d->p_x - d->dir_y * 0.2)] != '1')
+		if (d->map_utils->map[(int)d->p_y]
+			[(int)(d->p_x - d->dir_y * 0.2)] != '1')
 			d->p_x -= d->dir_y * 0.2;
-	}	
+	}
 	else
 	{
-		if (d->map_utils->map[(int)(d->p_y - d->dir_x * 0.2)][(int) d->p_x] != '1')
+		if (d->map_utils->map[(int)(d->p_y - d->dir_x * 0.2)]
+			[(int) d->p_x] != '1')
 			d->p_y -= d->dir_x * 0.2;
-		if (d->map_utils->map[(int)d->p_y][(int) (int)(d->p_x + d->dir_y * 0.2)] != '1')
+		if (d->map_utils->map[(int)d->p_y]
+			[(int)(d->p_x + d->dir_y * 0.2)] != '1')
 			d->p_x += d->dir_y * 0.2;
 	}
 }
 
-void rotate_player(t_data *d)
+void	rotate_player(t_data *d)
 {
-	double angle;
-	double temp_x;
-	double temp_y;
-	
+	double	angle;
+	double	temp_x;
+	double	temp_y;
+
 	angle = 0.07;
 	if (d->key_press != 'r')
 		angle *= -1;

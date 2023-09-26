@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/25 17:27:45 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/26 19:05:59 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,16 +147,16 @@ int		ft_verify_digits(char *str);
 
 //***************map_utils.c*******************
 void	map_to_file(t_data *d, char *file_name);
+int		strlength(char *str);
 void	map_to_file2(t_data *d);
 void	map_to_matrix(t_data *d);
 void	ft_fill_map_index(t_data *d);
-void	put_first_last(t_data *d);
 
 //***************map_utils2.c*****************
 char	*fill_matrix_line(t_data *d, char *str);
 void	fill_rest(t_data *d);
 void	print_matrix(t_data *d);
-int		strlength(char *str);
+void	put_first_last(t_data *d);
 
 //***************check.c***********************
 void	check_letters(t_data *d);
@@ -164,6 +164,10 @@ void	check_letters2(t_data *d, char c);
 void	put_player_pos(t_data *d, int y, int x);
 void	handle_invalid_input(t_data *d);
 int		check_flood_fill(t_data *d, char **map, int x, int y);
+
+//***************check2.c***********************
+void	ft_check_textures(t_data *d);
+void	ft_check_textures2(t_data *d);
 
 //***************game.c***********************
 void	start_game(t_data *d);
@@ -173,11 +177,14 @@ void	draw_floor_celling(t_data *d);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 //***************game2.c***********************
-void	direction(t_data *d);
 void	ray_calc(t_data *d);
 void	check_side(t_data *d);
 void	get_hit(t_data *d);
 void	ray_values(t_data *d);
+
+//***************direction.c***********************
+void	direction(t_data *d);
+void	direction2(t_data *d);
 
 //***************movement.c********************
 int		ft_movs(t_data *d);

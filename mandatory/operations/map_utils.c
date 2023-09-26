@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:20:57 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/25 15:25:55 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/26 18:56:19 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,18 @@ void	map_to_file(t_data *d, char *file_name)
 
 int	strlength(char *str)
 {
-	int i;
+	int	i;
 	int	tab_count;
 	int	j;
 
 	tab_count = 0;
 	i = 0;
 	j = 0;
-	while(str[i])
+	while (str[i])
 	{
-		if(j == 8)
+		if (j == 8)
 			j = 0;
-		if(str[i] =='\t')
+		if (str[i] == '\t')
 		{
 			tab_count = tab_count + (8 - j);
 			j = 0;
@@ -103,27 +103,4 @@ void	ft_fill_map_index(t_data *d)
 	}
 	close(d->fd);
 	fill_rest(d);
-}
-
-void	put_first_last(t_data *d)
-{
-	int	i;
-
-	i = 0;
-	d->map_utils->map[0] = malloc(sizeof(char) * (d->line_length + 1));
-	d->map_utils->map[d->count_lines - 1] = malloc(sizeof(char)
-			* (d->line_length + 1));
-	while (i < d->line_length)
-	{
-		d->map_utils->map[0][i] = '#';
-		i++;
-	}
-	d->map_utils->map[0][i] = '\0';
-	i = 0;
-	while (i < d->line_length)
-	{
-		d->map_utils->map[d->count_lines - 1][i] = '#';
-		i++;
-	}
-	d->map_utils->map[d->count_lines - 1][i] = '\0';
 }

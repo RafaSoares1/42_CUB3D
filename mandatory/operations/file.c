@@ -34,6 +34,7 @@ void	args_in_file(t_data *d, char *file_name)
 		d->map_utils->skip_count++;
 	}
 	ft_no_leak(d, line);
+	ft_check_textures(d);
 	map_to_file(d, file_name);
 }
 

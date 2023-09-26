@@ -6,35 +6,11 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:18:42 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/25 14:39:29 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/26 19:04:48 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	direction(t_data *d)
-{
-	if (d->map_utils->player_pos == 'N')
-	{
-		d->dir_x = 0, d->dir_y = -1;
-		d->plane_x = 0.66, d->plane_y = 0;
-	}
-	if (d->map_utils->player_pos == 'S')
-	{
-		d->dir_x = 0, d->dir_y = 1;
-		d->plane_x = -0.66, d->plane_y = 0;
-	}
-	if (d->map_utils->player_pos == 'E')
-	{
-		d->dir_x = 1, d->dir_y = 0;
-		d->plane_x = 0, d->plane_y = 0.66;
-	}
-	if (d->map_utils->player_pos == 'W')
-	{
-		d->dir_x = -1, d->dir_y = 0;
-		d->plane_x = 0, d->plane_y = -0.66;
-	}
-}
 
 void	ray_calc(t_data *d)
 {
@@ -63,7 +39,7 @@ void	check_side(t_data *d)
 	}
 	else
 	{
-	d->stepx = 1;
+		d->stepx = 1;
 		d->side_dist_x = (d->mapx + 1.0 - d->p_x) * d->delta_dist_x;
 	}
 	if (d->raydir_y < 0)
@@ -82,7 +58,7 @@ void	get_hit(t_data *d)
 {
 	while (!d->hit)
 	{
-		if ( d->side_dist_x < d->side_dist_y)
+		if (d->side_dist_x < d->side_dist_y)
 		{
 			d->side_dist_x += d->delta_dist_x;
 			d->mapx += d->stepx;
