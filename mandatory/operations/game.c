@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/25 16:57:18 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:56:18 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	start_game(t_data *d)
 	d->img->img = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);
 	d->img->addr = mlx_get_data_addr(d->img->img, &d->img->bpp, &d->img->line_length, &d->img->endian);
 	//draw_minimap(d);
+	direction(d);
 	draw_raycast(d);
 	mlx_hook(d->win_ptr, KeyPress, KeyPressMask, handle_input, d);
 	mlx_hook(d->win_ptr, KeyRelease, KeyReleaseMask, release_key, d);
@@ -47,7 +48,6 @@ void	draw_raycast(t_data *d)
 	int j;
 
 	draw_floor_celling(d);
-	direction(d);
 	d->i = 0;
 	while(d->i < WIDTH)
 	{

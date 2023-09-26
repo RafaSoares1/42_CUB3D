@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:11 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/25 17:47:53 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:06:29 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	ft_movs(t_data *d)
 		move_vertical(d);
 		return (1);
 	}
-	else if (d->key_press == 'a' || d->key_press == 'd')
+	if (d->key_press == 'a' || d->key_press == 'd')
 	{
 		move_horizontal(d);
 		return (1);
 	}
-	else if (d->key_press == 'l' || d->key_press == 'r')
+	if (d->key_press == 'l' || d->key_press == 'r')
 	{
 		rotate_player(d);
 		return (1);
@@ -73,8 +73,8 @@ void rotate_player(t_data *d)
 	double angle;
 	double temp_x;
 	double temp_y;
-
-	angle = 0.1;
+	
+	angle = 0.07;
 	if (d->key_press != 'r')
 		angle *= -1;
 	temp_x = d->dir_x * cos(angle) - d->dir_y * sin(angle);
