@@ -17,7 +17,7 @@ int	handle_input(int keysym, t_data *d)
 	(void) d;
 	if (keysym == 65307)
 	{
-		//FALTA FREE
+		ft_free_game4(d);
 		exit (2);
 	}
 	if (keysym == 119)
@@ -48,11 +48,11 @@ int	release_key(int keysym, t_data *d)
 	if (keysym == 65361)
 		d->key_press = 'u';
 	if (keysym == 65363)
-		d->key_press = 'u';	
+		d->key_press = 'u';
 	return (0);
 }
 
-void	ft_move_player(t_data *d, int y, int x)
+/* void	ft_move_player(t_data *d, int y, int x)
 {
 	draw_player(x, y, PLAYER, d);
-}
+} */

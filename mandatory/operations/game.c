@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/26 14:56:18 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:36:08 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	start_game(t_data *d)
 	d->img = ft_calloc(1, sizeof(t_image));
 	ft_init_stack3(d);
 	d->img->img = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);
-	d->img->addr = mlx_get_data_addr(d->img->img, &d->img->bpp, &d->img->line_length, &d->img->endian);
-	//draw_minimap(d);
+	d->img->addr = mlx_get_data_addr(d->img->img, &d->img->bpp,
+			&d->img->line_length, &d->img->endian);
 	direction(d);
 	draw_raycast(d);
 	mlx_hook(d->win_ptr, KeyPress, KeyPressMask, handle_input, d);
@@ -44,12 +44,12 @@ int	game_loop(t_data *d)
 
 void	draw_raycast(t_data *d)
 {
-	int color;
-	int j;
+	int	color;
+	int	j;
 
 	draw_floor_celling(d);
 	d->i = 0;
-	while(d->i < WIDTH)
+	while (d->i < WIDTH)
 	{
 		ray_calc(d);
 		check_side(d);
@@ -72,35 +72,23 @@ void	draw_raycast(t_data *d)
 
 void	draw_floor_celling(t_data *d)
 {
-	int	x;
-	int	y;
-	unsigned int f_color;
-	unsigned int c_color;
+	unsigned int	f_color;
+	unsigned int	c_color;
 
-	x = 0;
-	y = 0;
-	f_color = (0x010000 * ft_atoi(d->map_utils->f_color[0])) + (0x000100 * ft_atoi(d->map_utils->f_color[1])) + ft_atoi(d->map_utils->f_color[2]);
-	c_color = 0x010000 * ft_atoi(d->map_utils->c_color[0]) + 0x000100 * ft_atoi(d->map_utils->c_color[1]) + ft_atoi(d->map_utils->c_color[2]);
-	while(x < WIDTH)
-	{
-		y = 0;
-		while(y < HEIGHT)
-		{
-			if (y <= (HEIGHT / 2))
-				my_mlx_pixel_put(d, x, y, c_color);
-			if(y > (HEIGHT / 2))
-				my_mlx_pixel_put(d, x, y, f_color);
-			y++;
-		}
-		x++;
-	}
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->img, 0, 0);
+	f_color = (0x010000 * ft_atoi(d->map_utils->f_color[0])) + (0x000100
+			* ft_atoi(d->map_utils->f_color[1]))
+		+ ft_atoi(d->map_utils->f_color[2]);
+	c_color = 0x010000 * ft_atoi(d->map_utils->c_color[0]) + 0x000100
+		* ft_atoi(d->map_utils->c_color[1])
+		+ ft_atoi(d->map_utils->c_color[2]);
+	draw_floor_celling2(d, f_color, c_color);
 }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->img->addr + (y * data->img->line_length + x * (data->img->bpp / 8));
-	*(unsigned int*)dst = color;
+	dst = data->img->addr + (y * data->img->line_length
+			+ x * (data->img->bpp / 8));
+	*(unsigned int *)dst = color;
 }

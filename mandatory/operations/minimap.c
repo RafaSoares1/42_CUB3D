@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:48:48 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/25 14:49:24 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:37:47 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void draw_grid(int x, int y, int color, t_data *d)
+/* void draw_grid(int x, int y, int color, t_data *d)
 {
 	int	i;
 	int	j;
@@ -113,3 +113,4 @@ void draw_player(int x, int y, int color, t_data *d)
 		j++;
 	}
 }
+ */

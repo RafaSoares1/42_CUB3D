@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/26 19:05:59 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:44:16 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ void	ft_no_leak2(t_data *d, char *line);
 
 //****************free2.c********************
 void	free_double_pointer(char **str);
+void	ft_free_game4(t_data *d);
 
 //***************main.c*********************
 int		main(int ac, char **av);
@@ -181,6 +182,9 @@ void	ray_calc(t_data *d);
 void	check_side(t_data *d);
 void	get_hit(t_data *d);
 void	ray_values(t_data *d);
+
+//**************game3.c**************************
+void	draw_floor_celling2(t_data *d, int f_color, int c_color);
 
 //***************direction.c***********************
 void	direction(t_data *d);

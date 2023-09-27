@@ -34,6 +34,7 @@ SRCS = 	mandatory/main.c\
 		mandatory/operations/movement.c\
 		mandatory/operations/game.c\
 		mandatory/operations/game2.c\
+		mandatory/operations/game3.c\
 		mandatory/operations/key_handle.c\
 		mandatory/operations/close_window.c\
 		mandatory/operations/init.c\
