@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/27 15:44:16 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/28 11:26:08 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,10 @@ typedef struct s_data
 	int		fd;
 	int		temp_fd;
 	int		i;
+	int		a;
+	int		b;
 	char	key_press;
+	int		tab_count;
 }	t_data;
 
 
@@ -155,9 +158,11 @@ void	ft_fill_map_index(t_data *d);
 
 //***************map_utils2.c*****************
 char	*fill_matrix_line(t_data *d, char *str);
+void	fill_matrix_line2(t_data *d, char *str, char **line);
 void	fill_rest(t_data *d);
 void	print_matrix(t_data *d);
 void	put_first_last(t_data *d);
+void	ft_print_map(t_data *d);
 
 //***************check.c***********************
 void	check_letters(t_data *d);

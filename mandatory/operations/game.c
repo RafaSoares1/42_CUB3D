@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/27 15:36:08 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:38:02 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,19 @@ void	draw_raycast(t_data *d)
 		get_hit(d);
 		ray_values(d);
 		if (d->side == 1)
-			color = 0xffc0cb;
-		else
-			color = 0xfff4aa;
+		{
+			if(d->raydir_y < 0)//s
+				color = 0xffffff;	
+			else
+				color = 0x000000;//N
+		}
+		else //verificar y
+		{
+			if(d->raydir_x < 0)//w
+				color = 0xffa500;	
+			else
+				color = 0x00ff00;//e
+		}
 		j = d->draw_start;
 		while (j < d->draw_end)
 		{

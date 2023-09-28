@@ -1,4 +1,4 @@
--/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   map_utils2.c                                       :+:      :+:    :+:   */
@@ -93,9 +93,21 @@ void	fill_rest(t_data *d)
 	}
 	check_letters(d);
 	ft_map_dup(d);
+	//ft_print_map(d);
 	if (check_flood_fill(d, d->map_utils->map_dup, d->p_x, d->p_y) == 0)
 	{
 		ft_free_game3(d);
 		finish_error("Error: Map is not closed!\n", 2);
+	}
+}
+
+void	ft_print_map(t_data *d)
+{
+	int i = 0;
+
+	while(d->map_utils->map[i])
+	{
+		ft_printf("%s\n", d->map_utils->map[i]);
+		i++;
 	}
 }
