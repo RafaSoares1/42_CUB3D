@@ -35,45 +35,54 @@ void	put_first_last(t_data *d)
 	d->map_utils->map[d->count_lines - 1][i] = '\0';
 }
 
-char	*fill_matrix_line(t_data *d, char *str)
+static void	process_tabs_and_spaces(char *str, char *line, int *i, int *j)
 {
-	int		i;
-	int		j;
-	char	*line;
-	int		tab_count;
+	unsigned int	tab_count;
 
-	tab_count = 0;
-	i = 0;
-	j = 0;
-	line = malloc(sizeof(char) * (d->line_length + 1));
-	while (str[i])
+	while (str[*i])
 	{
-		tab_count++;
-		if (str[i] == '\t')
+		(tab_count)++;
+		if (str[*i] == '\t')
 		{
 			if (tab_count == 8)
 				tab_count = 0;
-			while (tab_count++ <= 8)
-				line[j++] = ' ';
+			while ((tab_count)++ <= 8)
+				line[(*j)++] = ' ';
 			tab_count = 0;
-			i++;
+			(*i)++;
 		}
 		else
 		{
 			if (tab_count >= 7)
 				tab_count = 0;
-			if (str[i] == '\n')
-				str[i] = '#';
-			line[j] = str[i];
-			i++;
-			j++;
+			if (str[*i] == '\n')
+				str[*i] = '#';
+			line[*j] = str[*i];
+			(*i)++;
+			(*j)++;
 		}
 	}
-	while (j < d->line_length)
+}
+
+static void	fill_remaining_with_hash(char *line, int line_length, int *j)
+{
+	while (*j < line_length)
 	{
-		line[j] = '#';
-		j++;
+		line[(*j)++] = '#';
 	}
+}
+
+char	*fill_matrix_line(t_data *d, char *str)
+{
+	int		i;
+	int		j;
+	char	*line;
+
+	i = 0;
+	j = 0;
+	line = malloc(sizeof(char) * (d->line_length + 1));
+	process_tabs_and_spaces(str, line, &i, &j);
+	fill_remaining_with_hash(line, d->line_length, &j);
 	line[j] = '\0';
 	return (line);
 }
@@ -93,21 +102,9 @@ void	fill_rest(t_data *d)
 	}
 	check_letters(d);
 	ft_map_dup(d);
-	//ft_print_map(d);
 	if (check_flood_fill(d, d->map_utils->map_dup, d->p_x, d->p_y) == 0)
 	{
 		ft_free_game3(d);
 		finish_error("Error: Map is not closed!\n", 2);
-	}
-}
-
-void	ft_print_map(t_data *d)
-{
-	int i = 0;
-
-	while(d->map_utils->map[i])
-	{
-		ft_printf("%s\n", d->map_utils->map[i]);
-		i++;
 	}
 }

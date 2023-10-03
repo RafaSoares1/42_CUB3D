@@ -56,6 +56,12 @@ void	ft_init_stack1(t_data *d)
 	d->a = 0;
 	d->b = 0;
 	d->tab_count = 0;
+	d->wall_x = 0;
+	d->tex_x = 0;
+	d->tex_y = 0;
+	d->text_step = 0;
+	d->text_pos = 0;
+	d->wall_dir = 0;
 	ft_init_stack2(d);
 }
 
@@ -83,4 +89,39 @@ void	ft_init_stack3(t_data *d)
 	d->img->endian = 0;
 	d->img->img = 0;
 	d->img->line_length = 0;
+	d->img->h = 0;
+	d->img->w = 0;
+	d->n_img->addr = 0;
+	d->n_img->bpp = 0;
+	d->n_img->endian = 0;
+	d->n_img->img = 0;
+	d->n_img->line_length = 0;
+	d->n_img->h = 0;
+	d->n_img->w = 0;
+	ft_init_stack4(d);
+}
+
+void	ft_init_stack4(t_data *d)
+{
+	d->s_img->addr = 0;
+	d->s_img->bpp = 0;
+	d->s_img->endian = 0;
+	d->s_img->img = 0;
+	d->s_img->line_length = 0;
+	d->s_img->h = 0;
+	d->s_img->w = 0;
+	d->w_img->addr = 0;
+	d->w_img->bpp = 0;
+	d->w_img->endian = 0;
+	d->w_img->img = 0;
+	d->w_img->line_length = 0;
+	d->w_img->h = 0;
+	d->w_img->w = 0;
+	d->e_img->addr = 0;
+	d->e_img->bpp = 0;
+	d->e_img->endian = 0;
+	d->e_img->img = 0;
+	d->e_img->line_length = 0;
+	d->e_img->h = 0;
+	d->e_img->w = 0;
 }

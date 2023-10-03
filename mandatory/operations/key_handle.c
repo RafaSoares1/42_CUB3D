@@ -51,8 +51,3 @@ int	release_key(int keysym, t_data *d)
 		d->key_press = 'u';
 	return (0);
 }
-
-/* void	ft_move_player(t_data *d, int y, int x)
-{
-	draw_player(x, y, PLAYER, d);
-} */

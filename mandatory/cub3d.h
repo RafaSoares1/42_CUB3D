@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/28 11:26:08 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:52:34 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,25 @@
 # define GRID 0x838589
 # define PLAYER 0xfffb00
 # define SIZE 50
-# define PLAYER_SIZE 7
-
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
 
 typedef struct s_image
 {
 	void	*img;
 	char	*addr;
-	int		bpp; //bits per pixel
+	int		bpp;
 	int		line_length;
 	int		endian;
+	int		h;
+	int		w;
 }	t_image;
 
 typedef struct s_map
 {
 	char	**map;
 	char	**map_dup;
-	char 	*no;
+	char	*no;
 	char	*so;
 	char	*we;
 	char	*ea;
@@ -64,8 +66,13 @@ typedef struct s_data
 	char	*line;
 	int		count_lines;
 	int		line_length;
-	t_map *map_utils;
-	t_image *img;
+	t_map	*map_utils;
+	t_image	*img;
+	t_image	*aux;
+	t_image	*n_img;
+	t_image	*s_img;
+	t_image	*w_img;
+	t_image	*e_img;
 	float	p_y;
 	float	p_x;
 	double	dir_x;
@@ -80,15 +87,16 @@ typedef struct s_data
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	perp_wall_dist;
-	int			stepx;
-	int			stepy;
-	int			hit;
-	int			side;
-	int			line_height;
-	int			draw_start;
-	int			draw_end;
-	int			mapx;
-	int			mapy;
+	int		stepx;
+	int		stepy;
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		mapx;
+	int		mapy;
+	int		wall_dir;
 	int		x;
 	int		y;
 	int		fd;
@@ -98,24 +106,31 @@ typedef struct s_data
 	int		b;
 	char	key_press;
 	int		tab_count;
+	double	wall_x;
+	int		tex_x;
+	int		tex_y;
+	double	text_step;
+	double	text_pos;
 }	t_data;
-
 
 //****************init.c*********************
 void	ft_init_stack(t_data *d);
 void	ft_init_stack1(t_data *d);
 void	ft_init_stack2(t_data *d);
 void	ft_init_stack3(t_data *d);
+void	ft_init_stack4(t_data *d);
+
+//****************init2.c*********************
+void	init_struct_imgs(t_data *d);
 
 //****************utils.c********************
-int 	ft_count(char *str, char c);
+int		ft_count(char *str, char c);
 void	finish_error(char *str, int i);
 int		ft_search(char *str, char c);
 int		ft_count_lines(t_data *d);
 
 //****************utils2.c********************
 void	ft_map_dup(t_data *d);
-
 
 //****************file.c********************
 void	args_in_file(t_data *d, char *file_name);
@@ -158,11 +173,10 @@ void	ft_fill_map_index(t_data *d);
 
 //***************map_utils2.c*****************
 char	*fill_matrix_line(t_data *d, char *str);
-void	fill_matrix_line2(t_data *d, char *str, char **line);
+char	*fill_matrix_line2(char *line, char *str, int *i, int *j);
 void	fill_rest(t_data *d);
 void	print_matrix(t_data *d);
 void	put_first_last(t_data *d);
-void	ft_print_map(t_data *d);
 
 //***************check.c***********************
 void	check_letters(t_data *d);
@@ -187,6 +201,7 @@ void	ray_calc(t_data *d);
 void	check_side(t_data *d);
 void	get_hit(t_data *d);
 void	ray_values(t_data *d);
+void	get_texture_val(t_data *d);
 
 //**************game3.c**************************
 void	draw_floor_celling2(t_data *d, int f_color, int c_color);
@@ -218,4 +233,11 @@ void	ft_move_player(t_data *d, int y, int x);
 //**************error.c***********************
 void	error_handling(char *line, t_data *d, char *str);
 
+//**************xpm_files.c*******************
+void	get_imgs_xpm(t_data *d);
+
+//**************draw.c************************
+void	ft_draw(t_data *d, int i);
+void	get_wall_x(t_data *d);
+int		ft_get_pixel(t_data *d, int x, int y);
 #endif

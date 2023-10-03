@@ -1,9 +1,12 @@
-NO ../textures/ENEMY.xpm
-SO ../textures/FLOOR.xpm
-WE ../textures/RickS.xpm
+NO ./mandatory/textures/nn_letter.xpm
+SO ./mandatory/textures/ss_letter.xpm
+WE ./mandatory/textures/ww_letter.xpm
 F 0,0,255
-EA ../textures/WALL.xpm
-C 255,0,0
+EA ./mandatory/textures/ee_letter.xpm
+C 255,255,255
+
+
+
 	1111111111111111111111111
 	1000000000110000000000001
 	1011000001110000000000001
@@ -18,3 +21,4 @@ C 255,0,0
 11000001110101011111011110N0111
 11110111 1110101 101111010001
 11111111 1111111 111111111111
+

@@ -38,8 +38,11 @@ SRCS = 	mandatory/main.c\
 		mandatory/operations/key_handle.c\
 		mandatory/operations/close_window.c\
 		mandatory/operations/init.c\
+		mandatory/operations/init2.c\
 		mandatory/operations/error.c\
 		mandatory/operations/direction.c\
+		mandatory/operations/xpm_files.c\
+		mandatory/operations/draw.c\
 
 OBJS = $(SRCS:%.c=%.o)
 

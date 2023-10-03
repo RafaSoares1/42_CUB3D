@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/09/28 14:38:02 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:39:23 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ void	start_game(t_data *d)
 	if (d->mlx_ptr == NULL)
 		return ;
 	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
-	d->img = ft_calloc(1, sizeof(t_image));
+	init_struct_imgs(d);
 	ft_init_stack3(d);
-	d->img->img = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);
-	d->img->addr = mlx_get_data_addr(d->img->img, &d->img->bpp,
-			&d->img->line_length, &d->img->endian);
+	get_imgs_xpm(d);
 	direction(d);
 	draw_raycast(d);
 	mlx_hook(d->win_ptr, KeyPress, KeyPressMask, handle_input, d);
@@ -44,9 +42,6 @@ int	game_loop(t_data *d)
 
 void	draw_raycast(t_data *d)
 {
-	int	color;
-	int	j;
-
 	draw_floor_celling(d);
 	d->i = 0;
 	while (d->i < WIDTH)
@@ -55,26 +50,8 @@ void	draw_raycast(t_data *d)
 		check_side(d);
 		get_hit(d);
 		ray_values(d);
-		if (d->side == 1)
-		{
-			if(d->raydir_y < 0)//s
-				color = 0xffffff;	
-			else
-				color = 0x000000;//N
-		}
-		else //verificar y
-		{
-			if(d->raydir_x < 0)//w
-				color = 0xffa500;	
-			else
-				color = 0x00ff00;//e
-		}
-		j = d->draw_start;
-		while (j < d->draw_end)
-		{
-			my_mlx_pixel_put(d, d->i, j, color);
-			j++;
-		}
+		get_texture_val(d);
+		ft_draw(d, d->i);
 		d->i++;
 	}
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->img, 0, 0);

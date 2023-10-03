@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:11 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/28 14:16:32 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:42:05 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,4 @@ void	rotate_player(t_data *d)
 	temp_y = d->plane_x * sin(angle) + d->plane_y * cos(angle);
 	d->plane_x = temp_x;
 	d->plane_y = temp_y;
-	printf("%f, %f\n", d->dir_x, d->dir_y);
 }
