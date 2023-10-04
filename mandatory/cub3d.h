@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/04 12:32:16 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:13:47 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void	ft_init_stack4(t_data *d);
 
 //****************init2.c*********************
 void	init_struct_imgs(t_data *d);
+int		check_access(t_data *d);
 
 //****************utils.c********************
 int		ft_count(char *str, char c);
@@ -159,6 +160,8 @@ void	ft_no_leak2(t_data *d, char *line);
 void	free_double_pointer(char **str);
 void	ft_free_game4(t_data *d);
 void	ft_free_game5(t_data *d);
+void	ft_free_game6(t_data *d);
+void	ft_free_game7(t_data *d);
 
 //***************main.c*********************
 int		main(int ac, char **av);
@@ -238,6 +241,7 @@ void	ft_move_player(t_data *d, int y, int x);
 
 //**************error.c***********************
 void	error_handling(char *line, t_data *d, char *str);
+void	error_handling2(t_data *d, char *str);
 
 //**************xpm_files.c*******************
 void	get_imgs_xpm(t_data *d);
