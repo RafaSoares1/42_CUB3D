@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:20:57 by emsoares          #+#    #+#             */
-/*   Updated: 2023/09/26 18:56:19 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:45:11 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ void	map_to_file(t_data *d, char *file_name)
 	d->line = get_next_line(d->fd);
 	while (ft_search(d->line, '1') != 1)
 	{
+		if (!ft_search_space(d->line))
+		{
+			free(d->line);
+			ft_no_leak(d, d->line);
+			ft_free_game(d);
+			finish_error("Error: invalid element position!\n", 2);
+		}
 		free(d->line);
 		d->line = get_next_line(d->fd);
 	}

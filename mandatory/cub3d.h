@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/04 16:13:47 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:45:40 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ int		ft_count_lines(t_data *d);
 
 //****************utils2.c********************
 void	ft_map_dup(t_data *d);
+int		ft_search_space(char *str);
 
 //****************file.c********************
 void	args_in_file(t_data *d, char *file_name);

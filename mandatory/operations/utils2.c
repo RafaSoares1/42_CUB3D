@@ -24,3 +24,17 @@ void	ft_map_dup(t_data *d)
 		i++;
 	}
 }
+
+int	ft_search_space(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
