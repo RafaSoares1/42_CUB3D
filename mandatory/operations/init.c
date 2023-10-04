@@ -52,7 +52,6 @@ void	ft_init_stack1(t_data *d)
 	d->fd = 0;
 	d->temp_fd = 0;
 	d->i = 0;
-	d->key_press = 'u';
 	d->a = 0;
 	d->b = 0;
 	d->tab_count = 0;
@@ -80,6 +79,12 @@ void	ft_init_stack2(t_data *d)
 	d->map_utils->c_color = 0;
 	d->map_utils->color_aux = 0;
 	d->map_utils->skip_count = 0;
+	d->key_press_up = 0;
+	d->key_press_down = 0;
+	d->key_press_left = 0;
+	d->key_press_right = 0;
+	d->key_press_r_right = 0;
+	d->key_press_r_left = 0;
 }
 
 void	ft_init_stack3(t_data *d)

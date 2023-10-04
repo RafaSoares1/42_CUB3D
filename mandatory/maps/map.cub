@@ -1,9 +1,9 @@
 NO ./mandatory/textures/nn_letter.xpm
 SO ./mandatory/textures/ss_letter.xpm
 WE ./mandatory/textures/ww_letter.xpm
-F 0,0,255
-EA ./mandatory/textures/ee_letter.xpm
-C 255,255,255
+F 255,255,255
+EA ./mandatory/textures/eel_letter.xpm
+C 0,0,255
 
 
 

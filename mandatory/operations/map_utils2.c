@@ -35,55 +35,52 @@ void	put_first_last(t_data *d)
 	d->map_utils->map[d->count_lines - 1][i] = '\0';
 }
 
-static void	process_tabs_and_spaces(char *str, char *line, int *i, int *j)
+static void	process_tabs_and_spaces(char *str, char *line, t_data *d)
 {
-	unsigned int	tab_count;
-
-	while (str[*i])
+	d->tab_count = 0;
+	while (str[d->a])
 	{
-		(tab_count)++;
-		if (str[*i] == '\t')
+		d->tab_count++;
+		if (str[d->a] == '\t')
 		{
-			if (tab_count == 8)
-				tab_count = 0;
-			while ((tab_count)++ <= 8)
-				line[(*j)++] = ' ';
-			tab_count = 0;
-			(*i)++;
+			if (d->tab_count == 8)
+				d->tab_count = 0;
+			while (d->tab_count++ <= 8)
+				line[d->b++] = ' ';
+			d->tab_count = 0;
+			d->a++;
 		}
 		else
 		{
-			if (tab_count >= 7)
-				tab_count = 0;
-			if (str[*i] == '\n')
-				str[*i] = '#';
-			line[*j] = str[*i];
-			(*i)++;
-			(*j)++;
+			if (d->tab_count >= 7)
+				d->tab_count = 0;
+			if (str[d->a] == '\n')
+				str[d->a] = '#';
+			line[d->b] = str[d->a];
+			d->a++;
+			d->b++;
 		}
 	}
 }
 
-static void	fill_remaining_with_hash(char *line, int line_length, int *j)
+static void	fill_remaining_with_hash(char *line, t_data *d)
 {
-	while (*j < line_length)
+	while (d->b < d->line_length)
 	{
-		line[(*j)++] = '#';
+		line[d->b++] = '#';
 	}
 }
 
 char	*fill_matrix_line(t_data *d, char *str)
 {
-	int		i;
-	int		j;
 	char	*line;
 
-	i = 0;
-	j = 0;
+	d->a = 0;
+	d->b = 0;
 	line = malloc(sizeof(char) * (d->line_length + 1));
-	process_tabs_and_spaces(str, line, &i, &j);
-	fill_remaining_with_hash(line, d->line_length, &j);
-	line[j] = '\0';
+	process_tabs_and_spaces(str, line, d);
+	fill_remaining_with_hash(line, d);
+	line[d->b] = '\0';
 	return (line);
 }
 
