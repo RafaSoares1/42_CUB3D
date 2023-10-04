@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:57:11 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/03 14:42:05 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:08:35 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 int	ft_movs(t_data *d)
 {
-	if (d->key_press == 'w' || d->key_press == 's')
-	{
-		move_vertical(d);
+	if (d->key_press_up == 1)
+		move_vertical(d, 1);
+	if (d->key_press_down == 1)
+		move_vertical(d, 0);
+	if (d->key_press_right == 1)
+		move_horizontal(d, 1);
+	if (d->key_press_left == 1)
+		move_horizontal(d, 0);
+	if (d->key_press_r_left == 1)
+		rotate_player(d, -1);
+	if (d->key_press_r_right == 1)
+		rotate_player(d, 1);
+	if (d->key_press_up || d->key_press_down || d->key_press_left
+		|| d->key_press_right || d->key_press_r_left || d->key_press_r_right)
 		return (1);
-	}
-	if (d->key_press == 'a' || d->key_press == 'd')
-	{
-		move_horizontal(d);
-		return (1);
-	}
-	if (d->key_press == 'l' || d->key_press == 'r')
-	{
-		rotate_player(d);
-		return (1);
-	}
 	return (0);
 }
 
-void	move_vertical(t_data *d)
+void	move_vertical(t_data *d, int dir_flag)
 {
-	if (d->key_press == 'w')
+	if (dir_flag)
 	{
 		if (d->map_utils->map[(int)(d->p_y + d->dir_y * 0.2)]
 			[(int) d->p_x] != '1')
@@ -54,9 +54,9 @@ void	move_vertical(t_data *d)
 	}
 }
 
-void	move_horizontal(t_data *d)
+void	move_horizontal(t_data *d, int dir_flag)
 {
-	if (d->key_press == 'd')
+	if (dir_flag)
 	{
 		if (d->map_utils->map[(int)(d->p_y + d->dir_x * 0.2)]
 			[(int) d->p_x] != '1')
@@ -76,14 +76,14 @@ void	move_horizontal(t_data *d)
 	}
 }
 
-void	rotate_player(t_data *d)
+void	rotate_player(t_data *d, int dir_flag)
 {
 	double	angle;
 	double	temp_x;
 	double	temp_y;
 
-	angle = 0.07;
-	if (d->key_press != 'r')
+	angle = 0.10;
+	if (dir_flag != 1)
 		angle *= -1;
 	temp_x = d->dir_x * cos(angle) - d->dir_y * sin(angle);
 	temp_y = d->dir_x * sin(angle) + d->dir_y * cos(angle);

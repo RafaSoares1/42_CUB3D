@@ -45,11 +45,24 @@ void	ft_free_game4(t_data *d)
 		free(d->map_utils->so);
 	if (d->map_utils->we)
 		free(d->map_utils->we);
-	mlx_destroy_image(d->mlx_ptr, d->img->img);
-	free(d->img);
+	ft_free_game5(d);
 	free(d->map_utils);
 	mlx_destroy_window(d->mlx_ptr, d->win_ptr);
 	mlx_destroy_display(d->mlx_ptr);
 	free(d->mlx_ptr);
 	free(d);
+}
+
+void	ft_free_game5(t_data *d)
+{
+	mlx_destroy_image(d->mlx_ptr, d->n_img->img);
+	mlx_destroy_image(d->mlx_ptr, d->s_img->img);
+	mlx_destroy_image(d->mlx_ptr, d->w_img->img);
+	mlx_destroy_image(d->mlx_ptr, d->e_img->img);
+	free(d->n_img);
+	free(d->s_img);
+	free(d->w_img);
+	free(d->e_img);
+	mlx_destroy_image(d->mlx_ptr, d->img->img);
+	free(d->img);
 }

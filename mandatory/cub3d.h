@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/03 15:52:34 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:32:16 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,12 @@ typedef struct s_data
 	int		i;
 	int		a;
 	int		b;
-	char	key_press;
+	int		key_press_up;
+	int		key_press_down;
+	int		key_press_left;
+	int		key_press_right;
+	int		key_press_r_right;
+	int		key_press_r_left;
 	int		tab_count;
 	double	wall_x;
 	int		tex_x;
@@ -153,6 +158,7 @@ void	ft_no_leak2(t_data *d, char *line);
 //****************free2.c********************
 void	free_double_pointer(char **str);
 void	ft_free_game4(t_data *d);
+void	ft_free_game5(t_data *d);
 
 //***************main.c*********************
 int		main(int ac, char **av);
@@ -212,9 +218,9 @@ void	direction2(t_data *d);
 
 //***************movement.c********************
 int		ft_movs(t_data *d);
-void	move_vertical(t_data *d);
-void	move_horizontal(t_data *d);
-void	rotate_player(t_data *d);
+void	move_vertical(t_data *d, int dir_flag);
+void	move_horizontal(t_data *d, int dir_flag);
+void	rotate_player(t_data *d, int dir_flag);
 
 //***************minimap.c***********************
 void	draw_minimap(t_data *d);

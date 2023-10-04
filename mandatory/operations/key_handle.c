@@ -21,33 +21,33 @@ int	handle_input(int keysym, t_data *d)
 		exit (2);
 	}
 	if (keysym == 119)
-		d->key_press = 'w';
+		d->key_press_up = 1;
 	if (keysym == 97)
-		d->key_press = 'a';
+		d->key_press_left = 1;
 	if (keysym == 115)
-		d->key_press = 's';
+		d->key_press_down = 1;
 	if (keysym == 100)
-		d->key_press = 'd';
+		d->key_press_right = 1;
 	if (keysym == 65361)
-		d->key_press = 'l';
+		d->key_press_r_left = 1;
 	if (keysym == 65363)
-		d->key_press = 'r';
+		d->key_press_r_right = 1;
 	return (0);
 }
 
 int	release_key(int keysym, t_data *d)
 {
 	if (keysym == 119)
-		d->key_press = 'u';
+		d->key_press_up = 0;
 	if (keysym == 97)
-		d->key_press = 'u';
+		d->key_press_left = 0;
 	if (keysym == 115)
-		d->key_press = 'u';
+		d->key_press_down = 0;
 	if (keysym == 100)
-		d->key_press = 'u';
+		d->key_press_right = 0;
 	if (keysym == 65361)
-		d->key_press = 'u';
+		d->key_press_r_left = 0;
 	if (keysym == 65363)
-		d->key_press = 'u';
+		d->key_press_r_right = 0;
 	return (0);
 }
