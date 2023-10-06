@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/04 16:45:40 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:55:18 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ int		ft_count_lines(t_data *d);
 //****************utils2.c********************
 void	ft_map_dup(t_data *d);
 int		ft_search_space(char *str);
+int		strlength(char *str);
 
 //****************file.c********************
 void	args_in_file(t_data *d, char *file_name);
@@ -154,8 +155,6 @@ void	put_path(t_data *d, char *line, int flag);
 void	ft_free_game(t_data *d);
 void	ft_free_game2(t_data *d);
 void	ft_free_game3(t_data *d);
-void	ft_no_leak(t_data *d, char *line);
-void	ft_no_leak2(t_data *d, char *line);
 
 //****************free2.c********************
 void	free_double_pointer(char **str);
@@ -163,6 +162,11 @@ void	ft_free_game4(t_data *d);
 void	ft_free_game5(t_data *d);
 void	ft_free_game6(t_data *d);
 void	ft_free_game7(t_data *d);
+
+//****************no_leak.c*****************
+void	ft_no_leak(t_data *d, char *line);
+void	ft_no_leak2(t_data *d, char *line);
+int		ft_no_leak3(t_data *d, char *line);
 
 //***************main.c*********************
 int		main(int ac, char **av);
@@ -176,7 +180,7 @@ int		ft_verify_digits(char *str);
 
 //***************map_utils.c*******************
 void	map_to_file(t_data *d, char *file_name);
-int		strlength(char *str);
+void	search_for_map_elem(t_data *d);
 void	map_to_file2(t_data *d);
 void	map_to_matrix(t_data *d);
 void	ft_fill_map_index(t_data *d);

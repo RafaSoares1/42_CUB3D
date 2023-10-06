@@ -23,6 +23,7 @@ SRCS = 	mandatory/main.c\
 		mandatory/operations/utils2.c\
 		mandatory/operations/free.c\
 		mandatory/operations/free2.c\
+		mandatory/operations/no_leak.c\
 		mandatory/operations/file.c\
 		mandatory/operations/file2.c\
 		mandatory/operations/rgb_utils.c\

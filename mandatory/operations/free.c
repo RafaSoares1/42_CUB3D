@@ -77,28 +77,3 @@ void	ft_free_game3(t_data *d)
 	free(d->map_utils);
 	free(d);
 }
-
-void	ft_no_leak(t_data *d, char *line)
-{
-	while (1)
-	{
-		line = get_next_line(d->fd);
-		if (!line)
-			break ;
-		valid_info(d, line);
-		free(line);
-	}
-	close(d->fd);
-}
-
-void	ft_no_leak2(t_data *d, char *line)
-{
-	while (1)
-	{
-		line = get_next_line(d->fd);
-		if (!line)
-			break ;
-		free(line);
-	}
-	close(d->fd);
-}

@@ -38,3 +38,27 @@ int	ft_search_space(char *str)
 	}
 	return (1);
 }
+
+int	strlength(char *str)
+{
+	int	i;
+	int	tab_count;
+	int	j;
+
+	tab_count = 0;
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (j == 8)
+			j = 0;
+		if (str[i] == '\t')
+		{
+			tab_count = tab_count + (8 - j);
+			j = 0;
+		}
+		j++;
+		i++;
+	}
+	return (i + tab_count);
+}

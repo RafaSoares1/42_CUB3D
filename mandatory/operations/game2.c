@@ -6,7 +6,7 @@
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:18:42 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/03 14:39:27 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:12:10 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,15 +98,15 @@ void	get_texture_val(t_data *d)
 	if (d->side == 1)
 	{
 		if (d->raydir_y < 0)
-			d->aux = d->n_img;
-		else
 			d->aux = d->s_img;
+		else
+			d->aux = d->n_img;
 	}
 	else
 	{
 		if (d->raydir_x < 0)
-			d->aux = d->w_img;
-		else
 			d->aux = d->e_img;
+		else
+			d->aux = d->w_img;
 	}
 }
