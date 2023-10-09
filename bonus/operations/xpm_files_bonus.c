@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 12:09:16 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/09 10:41:58 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:57:37 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ void	get_imgs_xpm(t_data *d)
 	d->img->img = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);
 	d->img->addr = mlx_get_data_addr(d->img->img, &d->img->bpp,
 			&d->img->line_length, &d->img->endian);
+	d->minimap_img->img = mlx_new_image(d->mlx_ptr, 110, 110);
+	d->minimap_img->addr = mlx_get_data_addr(d->minimap_img->img, &d->minimap_img->bpp,
+			&d->minimap_img->line_length, &d->minimap_img->endian);
 	d->n_img->img = mlx_xpm_file_to_image(d->mlx_ptr, d->map_utils->no,
 			&d->n_img->w, &d->n_img->h);
 	d->n_img->addr = mlx_get_data_addr(d->n_img->img, &d->n_img->bpp,

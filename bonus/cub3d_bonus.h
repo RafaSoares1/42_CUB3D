@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/06 11:55:18 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:48:30 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # include <math.h>
 # define HEIGHT 1080
 # define WIDTH 1920
-# define WALL 0xffffff
-# define FLOOR 0x000000
-# define GRID 0x838589
-# define PLAYER 0xfffb00
+# define WALL 0x666666
+# define OUTSIDE 0x000000
+# define FLOOR 0xffffff
+# define PLAYER 0x008182
 # define SIZE 50
 # define TEX_WIDTH 64
 # define TEX_HEIGHT 64
@@ -68,6 +68,7 @@ typedef struct s_data
 	int		line_length;
 	t_map	*map_utils;
 	t_image	*img;
+	t_image	*minimap_img;
 	t_image	*aux;
 	t_image	*n_img;
 	t_image	*s_img;
@@ -116,6 +117,8 @@ typedef struct s_data
 	int		tex_y;
 	double	text_step;
 	double	text_pos;
+	int		temp_x;
+	int		temp_y;
 }	t_data;
 
 //****************init.c*********************
@@ -232,9 +235,9 @@ void	rotate_player(t_data *d, int dir_flag);
 
 //***************minimap.c***********************
 void	draw_minimap(t_data *d);
-void	draw_grid(int x, int y, int color, t_data *d);
-void	draw_square(int x, int y, int color, t_data *d);
-void	draw_player(int x, int y, int color, t_data *d);
+void	draw_on_map(t_data *d, int color, int draw_x, int draw_y);
+void	draw_player_minimap(t_data *d, int color);
+void	my_mlx_pixel_put_minimap(t_data *data, int x, int y, int color);
 
 //***************close_window.c***********************
 int		ft_xbutton(t_data *d);

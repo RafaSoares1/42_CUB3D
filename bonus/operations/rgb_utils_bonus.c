@@ -23,11 +23,7 @@ void	put_rgb(t_data *d, char *line, int flag)
 	while (i < 3)
 	{
 		if (ft_verify_digits(d->map_utils->color_aux[i]))
-		{
-			ft_printf("Error: Wrong value in RGB!\n");
-			ft_printf("Must have the following: F/C value,value,value. ");
-			error_handling(line, d, "(Dont put extra spaces)\n");
-		}
+			error_handling(line, d, "Error: Wrong value in RGB!\n");
 		if (!(ft_atoi(d->map_utils->color_aux[i]) >= 0
 				&& ft_atoi(d->map_utils->color_aux[i]) <= 255))
 			error_handling(line, d, "Error: Wrong value in RGB!\n");
