@@ -110,7 +110,7 @@ bonus: $(OBJS_BONUS) $(LIBFT) $(MINILIBX)
 	echo "$(BLUE)╚██████╗╚██████╔╝██████╔╝██████╔╝██████╔╝$(RESET)"
 	echo "$(WHITE) ╚═════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚═════╝ $(RESET)"
 	echo ""
-	echo "$(GREEN)CUB3D executable is ready!$(RESET)"
+	echo "$(GREEN)CUB3D_BONUS executable is ready!$(RESET)"
 
 clean:
 	@$(MAKE) clean -C ./libft
@@ -124,7 +124,7 @@ clean_bonus:
 	@$(MAKE) clean -C ./minilibx-linux
 	@$(RM) $(OBJS_BONUS)
 	@$(RM) -r obj_bonus
-	echo "$(RED)Object files have been deleted!$(RESET)"
+	echo "$(RED)Object files from BONUS have been deleted!$(RESET)"
 
 fclean: clean clean_bonus
 	@$(MAKE) fclean -C ./libft
