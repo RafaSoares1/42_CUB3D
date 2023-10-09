@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:54:25 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/09 10:41:27 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:22:11 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	init_struct_imgs(t_data *d)
 {
 	d->img = ft_calloc(1, sizeof(t_image));
+	d->minimap_img = ft_calloc(1, sizeof(t_image));
 	d->n_img = ft_calloc(1, sizeof(t_image));
 	d->s_img = ft_calloc(1, sizeof(t_image));
 	d->w_img = ft_calloc(1, sizeof(t_image));

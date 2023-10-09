@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/10/09 11:32:38 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:29:08 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int	game_loop(t_data *d)
 	mlx_destroy_image(d->mlx_ptr, d->img->img);
 	d->img->img = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);
 	draw_raycast(d);
+	mlx_destroy_image(d->mlx_ptr, d->minimap_img->img);
+	d->minimap_img->img = mlx_new_image(d->mlx_ptr, 110, 110);
+	draw_minimap(d);
 	return (0);
 }
 

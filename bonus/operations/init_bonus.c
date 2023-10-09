@@ -35,6 +35,8 @@ void	ft_init_stack(t_data *d)
 	d->delta_dist_x = 0;
 	d->delta_dist_y = 0;
 	d->perp_wall_dist = 0;
+	d->temp_x = 0;
+	d->temp_y = 0;
 	ft_init_stack1(d);
 }
 
@@ -96,6 +98,13 @@ void	ft_init_stack3(t_data *d)
 	d->img->line_length = 0;
 	d->img->h = 0;
 	d->img->w = 0;
+	d->minimap_img->addr = 0;
+	d->minimap_img->bpp = 0;
+	d->minimap_img->endian = 0;
+	d->minimap_img->img = 0;
+	d->minimap_img->line_length = 0;
+	d->minimap_img->h = 0;
+	d->minimap_img->w = 0;
 	d->n_img->addr = 0;
 	d->n_img->bpp = 0;
 	d->n_img->endian = 0;
