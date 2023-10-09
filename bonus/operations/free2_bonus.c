@@ -64,6 +64,8 @@ void	ft_free_game5(t_data *d)
 	free(d->w_img);
 	free(d->e_img);
 	mlx_destroy_image(d->mlx_ptr, d->img->img);
+	mlx_destroy_image(d->mlx_ptr, d->minimap_img->img);
+	free(d->minimap_img);
 	free(d->img);
 }
 

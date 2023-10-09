@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/09 14:48:30 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:48:07 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
@@ -100,6 +100,8 @@ typedef struct s_data
 	int		wall_dir;
 	int		x;
 	int		y;
+	int		draw_x;
+	int		draw_y;
 	int		fd;
 	int		temp_fd;
 	int		i;
@@ -258,4 +260,5 @@ void	get_imgs_xpm(t_data *d);
 void	ft_draw(t_data *d, int i);
 void	get_wall_x(t_data *d);
 int		ft_get_pixel(t_data *d, int x, int y);
+
 #endif

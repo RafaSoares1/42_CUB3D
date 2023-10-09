@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:11:55 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/06 15:11:58 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:06:07 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	check_null_file(t_data *d, char *file_name)
 
 	d->fd = open(file_name, O_RDONLY);
 	line = get_next_line(d->fd);
-	if(!line)
+	if (!line)
 	{
 		ft_free_game(d);
 		finish_error("Error: RESOLVIDO!\n", 2);

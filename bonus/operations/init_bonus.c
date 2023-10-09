@@ -63,6 +63,8 @@ void	ft_init_stack1(t_data *d)
 	d->text_step = 0;
 	d->text_pos = 0;
 	d->wall_dir = 0;
+	d->draw_x = 0;
+	d->draw_y = 0;
 	ft_init_stack2(d);
 }
 
