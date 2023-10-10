@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:11:55 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/09 18:06:07 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:29:25 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	check_null_file(t_data *d, char *file_name)
 	if (!line)
 	{
 		ft_free_game(d);
-		finish_error("Error: RESOLVIDO!\n", 2);
+		finish_error("Error: no content on file\n", 2);
 	}
 	free(line);
 	ft_no_leak2(d, line);
