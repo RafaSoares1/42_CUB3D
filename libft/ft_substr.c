@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:48:45 by emsoares          #+#    #+#             */
-/*   Updated: 2022/11/17 12:30:01 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:54:13 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		str[a] = s[start + a];
 		a++;
 	}
-		str[a] = '\0';
+	str[a] = '\0';
 	return (str);
 }
 
