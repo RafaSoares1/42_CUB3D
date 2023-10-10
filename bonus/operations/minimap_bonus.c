@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:48:48 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/09 18:54:27 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:01:38 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,7 @@ void	draw_minimap(t_data *d)
 		d->temp_x = d->x;
 		while (d->x < d->temp_x + 11)
 		{
-			if (d->y < 0 || d->y >= d->count_lines || d->x < 0 || d->x >= d->line_length)
-				draw_on_map(d, OUTSIDE, d->draw_x, d->draw_y);
-			else if (ft_strchr("1", d->map_utils->map[d->y][d->x]))
-				draw_on_map(d, WALL, d->draw_x, d->draw_y);
-			else if (ft_strchr("0", d->map_utils->map[d->y][d->x]))
-				draw_on_map(d, FLOOR, d->draw_x, d->draw_y);
-			else if (d->map_utils->map[d->y][d->x] == d->map_utils->player_pos)
-				draw_on_map(d, FLOOR, d->draw_x, d->draw_y);
+			draw_minimap2(d);
 			d->x++;
 			d->draw_x += 10;
 		}
@@ -85,4 +78,17 @@ void	my_mlx_pixel_put_minimap(t_data *data, int x, int y, int color)
 	dst = data->minimap_img->addr + (y * data->minimap_img->line_length
 			+ x * (data->minimap_img->bpp / 8));
 	*(unsigned int *)dst = color;
+}
+
+void	draw_minimap2(t_data *d)
+{
+	if (d->y < 0 || d->y >= d->count_lines
+		|| d->x < 0 || d->x >= d->line_length)
+		draw_on_map(d, OUTSIDE, d->draw_x, d->draw_y);
+	else if (ft_strchr("1", d->map_utils->map[d->y][d->x]))
+		draw_on_map(d, WALL, d->draw_x, d->draw_y);
+	else if (ft_strchr("0", d->map_utils->map[d->y][d->x]))
+		draw_on_map(d, FLOOR, d->draw_x, d->draw_y);
+	else if (d->map_utils->map[d->y][d->x] == d->map_utils->player_pos)
+		draw_on_map(d, FLOOR, d->draw_x, d->draw_y);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:36:51 by emsoares          #+#    #+#             */
-/*   Updated: 2022/11/16 17:01:39 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:53:46 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	else if (str[i] == '+')
-	i++;
+		i++;
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
 		result *= 10;

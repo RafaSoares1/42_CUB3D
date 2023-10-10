@@ -1,10 +1,11 @@
 NO ./mandatory/textures/nnn_letter.xpm
 SO ./mandatory/textures/sss_letter.xpm
 WE ./mandatory/textures/www_letter.xpm
-F 255,255,255
+F 153,76,0
 EA ./mandatory/textures/eee_letter.xpm
 
-C 0,0,255
+
+C 102,178,255
 
 
 	1111111111111111111111111

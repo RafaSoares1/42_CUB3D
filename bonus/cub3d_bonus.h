@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/09 18:48:07 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:01:50 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,7 @@ void	draw_minimap(t_data *d);
 void	draw_on_map(t_data *d, int color, int draw_x, int draw_y);
 void	draw_player_minimap(t_data *d, int color);
 void	my_mlx_pixel_put_minimap(t_data *data, int x, int y, int color);
+void	draw_minimap2(t_data *d);
 
 //***************close_window.c***********************
 int		ft_xbutton(t_data *d);

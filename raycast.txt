@@ -144,20 +144,9 @@ It's initialized but will be set later based on the direction of the first wall 
 				d->hit = 1;
 		}
 
-/*it keeps track of whether the ray has hit a wall or not.
-Inside the loop, the code decides whether to move the ray horizontally (in the x-direction) or vertically (in the y-direction) to the next grid square (map square).
-It does this by comparing the distances to the next horizontal grid boundary (sideDistX) and the next vertical grid boundary (sideDistY).
-
-If sideDistX is smaller than sideDistY, it means the next horizontal grid boundary is closer.
-So, the code updates sideDistX by adding deltaDistX, moves to the next horizontal grid square (mapX += stepX), and sets side to 0 to indicate that the ray is moving horizontally
-
-If sideDistY is smaller than or equal to sideDistX, it means the next vertical grid boundary is closer.
-So, the code updates sideDistY by adding deltaDistY, moves to the next vertical grid square (mapY += stepY), and sets side to 1 to indicate that the ray is moving vertically.
-
-Checking if the Ray Hits a Wall: After jumping to the next grid square, the code checks if the ray has hit a wall
-
+/*
 In easy terms, this piece of code repeatedly moves the ray from one grid square to the next, either horizontally or vertically, depending on which boundary (side) is closer.
-t keeps doing this until the ray hits a wall (as determined by the worldMap) or until it has explored all relevant grid squares along its path.
+It keeps doing this until the ray hits a wall (as determined by the worldMap) or until it has explored all relevant grid squares along its path.
 This process is essential for tracing the ray's path and finding where it intersects with walls in the game world.
 
 */
@@ -188,12 +177,7 @@ draw_end is calculated as half of the screen height plus half of the line_height
 
 /* if draw_start is less than 0, it's set to 0 to prevent drawing above the top of the screen.
 If draw_end is greater than or equal to the screen height (HEIGHT), it's set to HEIGHT - 1 to prevent drawing below the bottom of the screen. */
-		if (d->side == 1)
-			color = 0xffc0cb;
-		else
-			color = 0xfff4aa;
-/* Depending on whether the ray hits a vertical or horizontal wall (d->side), a color is chosen.
-If it's a vertical wall, it's set to a pinkish color; if it's a horizontal wall, it's set to a pale yellow color. */
+
 		int j = d->draw_start;
 		while (j < d->draw_end)
 		{
@@ -201,5 +185,6 @@ If it's a vertical wall, it's set to a pinkish color; if it's a horizontal wall,
 			j++;
 		}
 		d->i++;
+*/ This is where the program starts drawing the scenario pixel by pixel. It goes to the rigth texture and searches for the pixel color as well. The pixels are drawn to a aux image, which we will later put to the screen. */
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:16:22 by emsoares          #+#    #+#             */
-/*   Updated: 2022/11/17 12:14:29 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:53:28 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		{
 			ft_lstclear(&temp, del);
 			return (0);
-		}	
+		}
 		ft_lstadd_back(&temp, new);
 		lst = lst->next;
 	}
