@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:54:25 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/09 14:22:11 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:41:09 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,14 @@ int	check_access(t_data *d)
 	fd[1] = open(d->map_utils->so, O_RDONLY);
 	fd[2] = open(d->map_utils->we, O_RDONLY);
 	fd[3] = open(d->map_utils->ea, O_RDONLY);
-	close(fd[0]);
-	close(fd[1]);
-	close(fd[2]);
-	close(fd[3]);
+	if(fd[0] > 0)
+		close(fd[0]);
+	if(fd[1] > 0)
+		close(fd[1]);
+	if(fd[2] > 0)
+		close(fd[2]);
+	if(fd[3] > 0)
+		close(fd[3]);
 	if (fd[0] < 0 || fd[1] < 0 || fd[2] < 0 || fd[3] < 0)
 		return (0);
 	return (1);
