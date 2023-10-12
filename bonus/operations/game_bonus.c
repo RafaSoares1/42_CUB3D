@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:44:34 by jomirand          #+#    #+#             */
-/*   Updated: 2023/10/09 15:29:08 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/11 11:04:52 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	start_game(t_data *d)
 	d->mlx_ptr = mlx_init();
 	if (d->mlx_ptr == NULL)
 		return ;
-	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
 	init_struct_imgs(d);
 	ft_init_stack3(d);
 	get_imgs_xpm(d);
+	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
 	direction(d);
 	draw_raycast(d);
 	draw_minimap(d);

@@ -22,12 +22,8 @@ void	put_rgb(t_data *d, char *line, int flag)
 	d->map_utils->color_aux = ft_split(line + 2, ',');
 	while (i < 3)
 	{
-		if (ft_verify_digits(d->map_utils->color_aux[i]))
-		{
-			ft_printf("Error: Wrong value in RGB!\n");
-			ft_printf("Must have the following: F/C value,value,value. ");
-			error_handling(line, d, "(Dont put extra spaces)\n");
-		}
+		if (ft_verify_digits(d->map_utils->color_aux[i], i))
+			error_handling(line, d, "Error: Wrong value in RGB!\n");
 		if (!(ft_atoi(d->map_utils->color_aux[i]) >= 0
 				&& ft_atoi(d->map_utils->color_aux[i]) <= 255))
 			error_handling(line, d, "Error: Wrong value in RGB!\n");
@@ -78,15 +74,24 @@ int	ft_check_next_comma(char *line)
 	return (0);
 }
 
-int	ft_verify_digits(char *str)
+int	ft_verify_digits(char *str, int position)
 {
 	int	i;
 
 	i = 0;
+	(void)position;
 	while (str[i] && str[i] != '\n')
 	{
-		if (!ft_isdigit(str[i]))
-			return (1);
+		if ((str[i] != ' ' && str[i] != '\t'))
+		{
+			if (ft_isalpha(str[i]))
+				return (1);
+			if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]))
+				return (1);
+			if (ft_isdigit(str[i]) && (!ft_isdigit(str[i + 1])
+					&& (str[i + 1] != '\0' && str[i + 1] != '\n')))
+				return (1);
+		}
 		i++;
 	}
 	return (0);
