@@ -21,7 +21,7 @@ void	args_in_file(t_data *d, char *file_name)
 		|| !d->map_utils->ea || !d->map_utils->so || !d->map_utils->c_color)
 	{
 		line = get_next_line(d->fd);
-		if (ft_strchr(" 1\t", line[0]))
+		if (ft_strchr(" 1", line[0]))
 		{
 			free(line);
 			ft_no_leak(d, line);

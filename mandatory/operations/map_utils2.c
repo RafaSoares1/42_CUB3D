@@ -37,29 +37,13 @@ void	put_first_last(t_data *d)
 
 static void	process_tabs_and_spaces(char *str, char *line, t_data *d)
 {
-	d->tab_count = 0;
 	while (str[d->a])
 	{
-		d->tab_count++;
-		if (str[d->a] == '\t')
-		{
-			if (d->tab_count == 8)
-				d->tab_count = 0;
-			while (d->tab_count++ <= 8)
-				line[d->b++] = ' ';
-			d->tab_count = 0;
-			d->a++;
-		}
-		else
-		{
-			if (d->tab_count >= 7)
-				d->tab_count = 0;
-			if (str[d->a] == '\n')
-				str[d->a] = '#';
-			line[d->b] = str[d->a];
-			d->a++;
-			d->b++;
-		}
+		if (str[d->a] == '\n')
+			str[d->a] = '#';
+		line[d->b] = str[d->a];
+		d->a++;
+		d->b++;
 	}
 }
 

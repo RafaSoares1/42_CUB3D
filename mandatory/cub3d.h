@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/06 11:55:18 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:29:12 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ int		ft_count(char *str, char c);
 void	finish_error(char *str, int i);
 int		ft_search(char *str, char c);
 int		ft_count_lines(t_data *d);
+int		string_comp(char *s1, char *s2);
 
 //****************utils2.c********************
 void	ft_map_dup(t_data *d);
@@ -176,7 +177,7 @@ void	ft_check_map_file(t_data *d, char *file_name);
 void	put_rgb(t_data *d, char *line, int flag);
 void	put_fc_rgb(t_data *d, int flag, char *line);
 int		ft_check_next_comma(char *line);
-int		ft_verify_digits(char *str);
+int		ft_verify_digits(char *str, int position);
 
 //***************map_utils.c*******************
 void	map_to_file(t_data *d, char *file_name);
@@ -247,9 +248,12 @@ void	ft_move_player(t_data *d, int y, int x);
 //**************error.c***********************
 void	error_handling(char *line, t_data *d, char *str);
 void	error_handling2(t_data *d, char *str);
+void	no_tab_error_handle(t_data *d);
+void	file_name_error(t_data *d);
 
 //**************xpm_files.c*******************
 void	get_imgs_xpm(t_data *d);
+void	get_imgs_addr(t_data *d);
 
 //**************draw.c************************
 void	ft_draw(t_data *d, int i);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   no_leak.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 11:33:49 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/06 11:35:20 by emsoares         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:29:54 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,17 @@ int	ft_no_leak3(t_data *d, char *line)
 	i = 0;
 	while (1)
 	{
-		line = get_next_line(d->fd);
-		if (!line)
+		if (line)
+		{
+			while (line)
+			{
+				free(line);
+				line = get_next_line(d->fd);
+			}
+			return (0);
+		}
+		else
 			break ;
-		if (!ft_search_space(line))
-			i++;
-		free(line);
 	}
 	close(d->fd);
 	if (i == 0)
