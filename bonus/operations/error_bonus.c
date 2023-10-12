@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:19:40 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/09 10:41:05 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:23:22 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,21 @@ void	error_handling2(t_data *d, char *str)
 {
 	ft_free_game6(d);
 	finish_error(str, 2);
+}
+
+void	no_tab_error_handle(t_data *d)
+{
+	free(d->line);
+	close(d->fd);
+	close(d->temp_fd);
+	ft_no_leak(d, d->line);
+	ft_free_game(d);
+	finish_error("Error\nProgram does not suport tabs\n", 2);
+}
+
+void	file_name_error(t_data *d)
+{
+	free(d->map_utils);
+	free(d);
+	finish_error("Error\nInvalid file type\n", 2);
 }

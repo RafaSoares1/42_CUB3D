@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:20:57 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/09 10:41:32 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:37:05 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ void	map_to_file(t_data *d, char *file_name)
 	search_for_map_elem(d);
 	while (ft_search(d->line, '1') == 1)
 	{
-		if (strlength(d->line) > d->line_length)
-			d->line_length = strlength(d->line);
+		if (ft_search(d->line, '\t'))
+			no_tab_error_handle(d);
+		if ((int)ft_strlen(d->line) > d->line_length)
+			d->line_length = ft_strlen(d->line);
 		write(d->temp_fd, d->line, ft_strlen(d->line));
 		free(d->line);
 		d->line = get_next_line(d->fd);
@@ -54,7 +56,6 @@ void	search_for_map_elem(t_data *d)
 
 void	map_to_file2(t_data *d)
 {
-	free(d->line);
 	if (ft_no_leak3(d, d->line) == 0)
 	{
 		close(d->temp_fd);

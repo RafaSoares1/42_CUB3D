@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:11:55 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/10 12:29:25 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:36:25 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,16 @@ void	ft_check_map_file(t_data *d, char *file_name)
 {
 	int	i;
 
-	i = 0;
-	d->fd = open(file_name, O_RDONLY);
 	i = ft_strlen(file_name) - 1;
 	while (file_name[i] != '.')
-		i--;
-	if (ft_strncmp((file_name + i), ".cub", 4) != 0)
 	{
-		close(d->fd);
-		free(d->map_utils);
-		free(d);
-		finish_error("Error\nInvalid file type\n", 2);
+		if (!file_name[i])
+			file_name_error(d);
+		i--;
 	}
+	if (!string_comp((file_name + i), ".cub"))
+		file_name_error(d);
+	d->fd = open(file_name, O_RDONLY);
 	if (d->fd < 0)
 	{
 		close(d->fd);
