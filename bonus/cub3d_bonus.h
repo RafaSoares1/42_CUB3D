@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/12 12:36:17 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:02:50 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,6 +255,7 @@ void	ft_move_player(t_data *d, int y, int x);
 void	error_handling(char *line, t_data *d, char *str);
 void	error_handling2(t_data *d, char *str);
 void	no_tab_error_handle(t_data *d);
+void	file_name_error(t_data *d);
 
 //**************xpm_files_bonus.c*******************
 void	get_imgs_xpm(t_data *d);

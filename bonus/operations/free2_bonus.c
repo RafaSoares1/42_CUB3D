@@ -107,5 +107,6 @@ void	ft_free_game7(t_data *d)
 	free(d->s_img);
 	free(d->w_img);
 	free(d->e_img);
+	free(d->minimap_img);
 	free(d->img);
 }
