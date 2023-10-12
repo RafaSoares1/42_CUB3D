@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:20:57 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/12 14:36:36 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:52:15 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	map_to_file(t_data *d, char *file_name)
 		free(d->line);
 		d->line = get_next_line(d->fd);
 	}
-	//close(d->fd);
 	map_to_file2(d);
 }
 

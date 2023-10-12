@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:19:40 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/12 14:26:39 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:52:21 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	error_handling(char *line, t_data *d, char *str)
 
 void	error_handling2(t_data *d, char *str)
 {
-	//close(d->fd);
 	ft_free_game6(d);
 	finish_error(str, 2);
 }
