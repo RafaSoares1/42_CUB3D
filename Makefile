@@ -77,6 +77,7 @@ OBJS = $(SRCS:%.c=%.o)
 OBJS_BONUS = $(SRCS_BONUS:%.c=%.o)
 
 all: $(NAME)
+bonus: $(NAME_BONUS)
 
 $(LIBFT):
 	@$(MAKE) -C ./libft
@@ -86,8 +87,6 @@ $(MINILIBX):
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINILIBX) $(MFLAGS) -o $(NAME) -lm
-	@mkdir -p obj
-	@mv $(OBJS) obj/
 	clear
 	echo "$(BLUE) ██████╗██╗   ██╗██████╗ ██████╗ ██████╗ $(RESET)"
 	echo "$(WHITE)██╔════╝██║   ██║██╔══██╗╚════██╗██╔══██╗$(RESET)"
@@ -98,10 +97,8 @@ $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 	echo ""
 	echo "$(GREEN)CUB3D executable is ready!$(RESET)"
 
-bonus: $(OBJS_BONUS) $(LIBFT) $(MINILIBX)
+$(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT) $(MINILIBX) $(MFLAGS) -o $(NAME_BONUS) -lm
-	@mkdir -p obj_bonus
-	@mv $(OBJS_BONUS) obj_bonus/
 	clear
 	echo "$(BLUE) ██████╗██╗   ██╗██████╗ ██████╗ ██████╗ $(RESET)"
 	echo "$(WHITE)██╔════╝██║   ██║██╔══██╗╚════██╗██╔══██╗$(RESET)"

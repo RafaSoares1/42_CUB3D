@@ -17,9 +17,9 @@ void	put_rgb(t_data *d, char *line, int flag)
 	int	i;
 
 	i = 0;
+	d->map_utils->color_aux = ft_split(line + 2, ',');
 	if (ft_count(line, ',') != 2 || ft_check_next_comma(line) == 1)
 		error_handling(line, d, "Error: Wrong number of color values!\n");
-	d->map_utils->color_aux = ft_split(line + 2, ',');
 	while (i < 3)
 	{
 		if (ft_verify_digits(d->map_utils->color_aux[i], i))
