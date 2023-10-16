@@ -18,7 +18,6 @@ void	check_letters(t_data *d)
 	char	c;
 
 	f = 0;
-	d->x = 0;
 	d->y = 0;
 	while (d->map_utils->map[d->y])
 	{
@@ -30,8 +29,7 @@ void	check_letters(t_data *d)
 				d->x++;
 			else if ((c == 'N' || c == 'S' || c == 'E' || c == 'W') && f == 0)
 			{
-				check_letters2(d, c);
-				f = 1;
+				f = check_letters2(d, c);
 				d->x++;
 			}
 			else
@@ -39,12 +37,15 @@ void	check_letters(t_data *d)
 		}
 		d->y++;
 	}
+	if (!f)
+		handle_invalid_input(d);
 }
 
-void	check_letters2(t_data *d, char c)
+int	check_letters2(t_data *d, char c)
 {
 	d->map_utils->player_pos = c;
 	put_player_pos(d, d->y, d->x);
+	return (1);
 }
 
 void	put_player_pos(t_data *d, int y, int x)

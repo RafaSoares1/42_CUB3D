@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/12 12:29:12 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:04:54 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,9 +193,13 @@ void	fill_rest(t_data *d);
 void	print_matrix(t_data *d);
 void	put_first_last(t_data *d);
 
+//***************map_utils3.c*****************
+int		check_closed_map(t_data *d);
+int		check_around(t_data *d, int x, int y, int size);
+
 //***************check.c***********************
 void	check_letters(t_data *d);
-void	check_letters2(t_data *d, char c);
+int		check_letters2(t_data *d, char c);
 void	put_player_pos(t_data *d, int y, int x);
 void	handle_invalid_input(t_data *d);
 int		check_flood_fill(t_data *d, char **map, int x, int y);

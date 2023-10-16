@@ -30,6 +30,7 @@ SRCS = 	mandatory/main.c\
 		mandatory/operations/rgb_utils.c\
 		mandatory/operations/map_utils.c\
 		mandatory/operations/map_utils2.c\
+		mandatory/operations/map_utils3.c\
 		mandatory/operations/check.c\
 		mandatory/operations/check2.c\
 		mandatory/operations/minimap.c\
@@ -57,6 +58,7 @@ SRCS_BONUS = bonus/main_bonus.c\
 			bonus/operations/rgb_utils_bonus.c\
 			bonus/operations/map_utils_bonus.c\
 			bonus/operations/map_utils2_bonus.c\
+			bonus/operations/map_utils3_bonus.c\
 			bonus/operations/check_bonus.c\
 			bonus/operations/check2_bonus.c\
 			bonus/operations/minimap_bonus.c\
@@ -86,8 +88,6 @@ $(MINILIBX):
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINILIBX) $(MFLAGS) -o $(NAME) -lm
-	@mkdir -p obj
-	@mv $(OBJS) obj/
 	clear
 	echo "$(BLUE) ██████╗██╗   ██╗██████╗ ██████╗ ██████╗ $(RESET)"
 	echo "$(WHITE)██╔════╝██║   ██║██╔══██╗╚════██╗██╔══██╗$(RESET)"
@@ -100,8 +100,6 @@ $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 
 bonus: $(OBJS_BONUS) $(LIBFT) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT) $(MINILIBX) $(MFLAGS) -o $(NAME_BONUS) -lm
-	@mkdir -p obj_bonus
-	@mv $(OBJS_BONUS) obj_bonus/
 	clear
 	echo "$(BLUE) ██████╗██╗   ██╗██████╗ ██████╗ ██████╗ $(RESET)"
 	echo "$(WHITE)██╔════╝██║   ██║██╔══██╗╚════██╗██╔══██╗$(RESET)"
