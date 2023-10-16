@@ -1,4 +1,0 @@
-4 valores no RGB -> leaks (225,30,1,2) no C							CHECK
-tirar permissoes do ficheiro -> warning -1 FD							CHECK
-exist_texture.xpme e exist_texture.xpme no ficheiro do mapa -> nao pode abrir o programa	CHECK
-alterar parsing do mapa -> considerar fechado ou aberto consoante o mapa todo, nao so o caminho por onde ele pode andar

@@ -30,6 +30,7 @@ SRCS = 	mandatory/main.c\
 		mandatory/operations/rgb_utils.c\
 		mandatory/operations/map_utils.c\
 		mandatory/operations/map_utils2.c\
+		mandatory/operations/map_utils3.c\
 		mandatory/operations/check.c\
 		mandatory/operations/check2.c\
 		mandatory/operations/minimap.c\
@@ -57,6 +58,7 @@ SRCS_BONUS = bonus/main_bonus.c\
 			bonus/operations/rgb_utils_bonus.c\
 			bonus/operations/map_utils_bonus.c\
 			bonus/operations/map_utils2_bonus.c\
+			bonus/operations/map_utils3_bonus.c\
 			bonus/operations/check_bonus.c\
 			bonus/operations/check2_bonus.c\
 			bonus/operations/minimap_bonus.c\
@@ -77,7 +79,6 @@ OBJS = $(SRCS:%.c=%.o)
 OBJS_BONUS = $(SRCS_BONUS:%.c=%.o)
 
 all: $(NAME)
-bonus: $(NAME_BONUS)
 
 $(LIBFT):
 	@$(MAKE) -C ./libft
@@ -97,7 +98,7 @@ $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 	echo ""
 	echo "$(GREEN)CUB3D executable is ready!$(RESET)"
 
-$(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(MINILIBX)
+bonus: $(OBJS_BONUS) $(LIBFT) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT) $(MINILIBX) $(MFLAGS) -o $(NAME_BONUS) -lm
 	clear
 	echo "$(BLUE) ██████╗██╗   ██╗██████╗ ██████╗ ██████╗ $(RESET)"

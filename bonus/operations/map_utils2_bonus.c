@@ -83,9 +83,5 @@ void	fill_rest(t_data *d)
 	}
 	check_letters(d);
 	ft_map_dup(d);
-	if (check_flood_fill(d, d->map_utils->map_dup, d->p_x, d->p_y) == 0)
-	{
-		ft_free_game3(d);
-		finish_error("Error: Map is not closed!\n", 2);
-	}
+	check_closed_map(d);
 }

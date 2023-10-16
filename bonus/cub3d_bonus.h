@@ -6,7 +6,7 @@
 /*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/12 14:02:50 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:08:34 by jomirand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,10 @@ char	*fill_matrix_line2(char *line, char *str, int *i, int *j);
 void	fill_rest(t_data *d);
 void	print_matrix(t_data *d);
 void	put_first_last(t_data *d);
+
+//***************map_utils3_bonus.c*****************
+int		check_closed_map(t_data *d);
+int		check_around(t_data *d, int x, int y, int size);
 
 //***************check_bonus.c***********************
 void	check_letters(t_data *d);

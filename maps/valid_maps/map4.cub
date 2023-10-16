@@ -1,9 +1,9 @@
 NO textures/nnn_letter.xpm
 SO textures/sss_letter.xpm
 WE textures/www_letter.xpm
-F 153,76,0
-EA  textures/eee_letter.xpm
-C 102,178,255
+F 20,0,255
+EA textures/eee_letter.xpm
+C 225,30,0
 
 111111
 1000S1
