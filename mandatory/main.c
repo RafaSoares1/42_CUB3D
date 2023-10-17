@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:11:55 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/12 12:29:02 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:52:29 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	ft_check_map_file(t_data *d, char *file_name)
 	d->fd = open(file_name, O_RDONLY);
 	if (d->fd < 0)
 	{
-		close(d->fd);
 		free(d->map_utils);
 		free(d);
 		finish_error("Error\nInvalid FD\n", 2);

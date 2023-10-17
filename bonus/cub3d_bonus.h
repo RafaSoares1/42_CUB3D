@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jomirand <jomirand@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: emsoares <emsoares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:12:07 by emsoares          #+#    #+#             */
-/*   Updated: 2023/10/16 17:08:34 by jomirand         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:05:13 by emsoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ void	put_rgb(t_data *d, char *line, int flag);
 void	put_fc_rgb(t_data *d, int flag, char *line);
 int		ft_check_next_comma(char *line);
 int		ft_verify_digits(char *str, int position);
+int		check_for_spaces(char *str);
 
 //***************map_utils_bonus.c*******************
 void	map_to_file(t_data *d, char *file_name);
@@ -204,10 +205,9 @@ int		check_around(t_data *d, int x, int y, int size);
 
 //***************check_bonus.c***********************
 void	check_letters(t_data *d);
-void	check_letters2(t_data *d, char c);
+int		check_letters2(t_data *d, char c);
 void	put_player_pos(t_data *d, int y, int x);
 void	handle_invalid_input(t_data *d);
-int		check_flood_fill(t_data *d, char **map, int x, int y);
 
 //***************check2_bonus.c***********************
 void	ft_check_textures(t_data *d);

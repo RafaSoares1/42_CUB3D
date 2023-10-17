@@ -17,9 +17,9 @@ void	put_rgb(t_data *d, char *line, int flag)
 	int	i;
 
 	i = 0;
+	d->map_utils->color_aux = ft_split(line + 2, ',');
 	if (ft_count(line, ',') != 2 || ft_check_next_comma(line) == 1)
 		error_handling(line, d, "Error: Wrong number of color values!\n");
-	d->map_utils->color_aux = ft_split(line + 2, ',');
 	while (i < 3)
 	{
 		if (ft_verify_digits(d->map_utils->color_aux[i], i))
@@ -79,7 +79,6 @@ int	ft_verify_digits(char *str, int position)
 	int	i;
 
 	i = 0;
-	(void)position;
 	while (str[i] && str[i] != '\n')
 	{
 		if ((str[i] != ' ' && str[i] != '\t'))
@@ -88,11 +87,25 @@ int	ft_verify_digits(char *str, int position)
 				return (1);
 			if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]))
 				return (1);
-			if (ft_isdigit(str[i]) && (!ft_isdigit(str[i + 1])
+			if (position != 2 && ft_isdigit(str[i]) && (!ft_isdigit(str[i + 1])
 					&& (str[i + 1] != '\0' && str[i + 1] != '\n')))
 				return (1);
 		}
+		if (position == 2 && (str[i] == ' ' || str[i] == '\t'))
+			return (check_for_spaces(str + i));
 		i++;
 	}
+	return (0);
+}
+
+int	check_for_spaces(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+		return (1);
 	return (0);
 }

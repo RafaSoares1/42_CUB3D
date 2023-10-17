@@ -41,10 +41,11 @@ void	check_letters(t_data *d)
 		handle_invalid_input(d);
 }
 
-void	check_letters2(t_data *d, char c)
+int	check_letters2(t_data *d, char c)
 {
 	d->map_utils->player_pos = c;
 	put_player_pos(d, d->y, d->x);
+	return (1);
 }
 
 void	put_player_pos(t_data *d, int y, int x)
@@ -57,27 +58,4 @@ void	handle_invalid_input(t_data *d)
 {
 	ft_free_game(d);
 	finish_error("Error: invalid elements in the map!\n", 2);
-}
-
-int	check_flood_fill(t_data *d, char **map, int x, int y)
-{
-	static int	hastag_count;
-
-	if (y < 0 || x < 0 || y > d->count_lines || x > d->line_length
-		|| map[y][x] == '1' || map[y][x] == 'X')
-		return (0);
-	if (map[y][x] == '#')
-	{
-		hastag_count++;
-		map[y][x] = 'X';
-		return (0);
-	}
-	map[y][x] = 'X';
-	check_flood_fill(d, map, x + 1, y);
-	check_flood_fill(d, map, x - 1, y);
-	check_flood_fill(d, map, x, y + 1);
-	check_flood_fill(d, map, x, y - 1);
-	if (hastag_count == 0)
-		return (1);
-	return (0);
 }

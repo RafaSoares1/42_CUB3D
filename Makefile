@@ -114,14 +114,14 @@ clean:
 	@$(MAKE) clean -C ./libft
 	@$(MAKE) clean -C ./minilibx-linux
 	@$(RM) $(OBJS)
-	@$(RM) -r obj
+	clear
 	echo "$(RED)Object files have been deleted!$(RESET)"
 
 clean_bonus:
 	@$(MAKE) clean -C ./libft
 	@$(MAKE) clean -C ./minilibx-linux
 	@$(RM) $(OBJS_BONUS)
-	@$(RM) -r obj_bonus
+	clear
 	echo "$(RED)Object files from BONUS have been deleted!$(RESET)"
 
 fclean: clean clean_bonus
