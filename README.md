@@ -10,3 +10,6 @@ Made together with [ZPedro99](https://github.com/ZPedro99).
 
 ## Little Demo On How The Project Works
 
+
+![ezgif com-video-to-gif(1)-min](https://github.com/RafaSoares1/CUB3D/assets/103336451/c9057800-168d-4527-a2a5-9eae973be42d)
+
