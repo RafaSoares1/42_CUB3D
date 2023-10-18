@@ -22,7 +22,7 @@ The project must respect certain aspects:
 - `WASD` must allow to move the "player"
 - The left and right arrow keys must allows to rotate the perspective
 - `ESC` and the cross on the window's frame must close the program
-- The program take a map only with the `.cub` extension
+- The program takes a map only with the `.cub` extension
 
 
 ## MinilibX
@@ -75,7 +75,7 @@ Or for the bonus:
 | ------------- | ------------- |
 |   0 |    Floor |
 |   1   |   Wall |
-|   N,S,E,W   |   Spwaning Orientation |
+|   N,S,E,W   |   Spawning Orientation |
 
 
 ### How to play
